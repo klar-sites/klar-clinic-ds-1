@@ -67,6 +67,15 @@
         align-items: stretch;
         gap: var(--space-12);
       }
+      /* Backdrop for specimens that are designed for dark surfaces (e.g. the
+         inverse outline button), so they render legibly in the library. */
+      .ds-specimen-dark {
+        display: inline-flex;
+        gap: var(--space-4);
+        padding: var(--space-4);
+        border-radius: var(--radius-md);
+        background: var(--secondary);
+      }
       .ds-sections > * {
         border: 1px dashed var(--border);
         border-radius: var(--radius-md);
@@ -523,6 +532,10 @@
           <button class="btn btn-secondary" type="button" data-klar-ds-label="Secondary button">Our treatments</button>
           <a class="btn btn-outline" href="#" data-klar-ds-label="Outline link">Learn more</a>
           <button class="btn btn-outline" type="button" data-klar-ds-label="Outline button">Learn more</button>
+          <span class="ds-specimen-dark">
+            <a class="btn btn-outline-inverse" href="#" data-klar-ds-label="Outline inverse link">Explore treatments</a>
+            <button class="btn btn-outline-inverse" type="button" data-klar-ds-label="Outline inverse button">Explore treatments</button>
+          </span>
           <button class="btn btn-ghost" type="button" data-klar-ds-label="Ghost button">Cancel</button>
           <a class="btn btn-primary btn-lg" href="#" data-klar-ds-label="Large link">Large</a>
           <button class="btn btn-primary btn-sm" type="button" data-klar-ds-label="Small button">Small</button>
@@ -1009,7 +1022,7 @@
                 <p class="cta__lead">Book a consultation today and start a recovery plan built entirely around you.</p>
                 <div class="cta__actions">
                   <a class="btn btn-primary btn-lg" href="contact.html">Book consultation</a>
-                  <a class="btn btn-outline btn-lg" href="treatments.html">Explore treatments</a>
+                  <a class="btn btn-outline-inverse btn-lg" href="treatments.html">Explore treatments</a>
                 </div>
               </div>
             </div>

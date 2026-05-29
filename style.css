@@ -364,6 +364,20 @@ ol {
   background-color: var(--accent);
 }
 
+/* Outline button for dark surfaces (e.g. inside .cta). Follows the inverse
+   foreground token instead of the page foreground, so it stays legible on
+   navy in both themes. Hover inverts to a solid light fill. */
+.btn-outline-inverse {
+  background-color: transparent;
+  color: var(--secondary-foreground);
+  border-color: color-mix(in srgb, var(--secondary-foreground) 45%, transparent);
+}
+.btn-outline-inverse:hover {
+  color: var(--secondary);
+  background-color: var(--secondary-foreground);
+  border-color: var(--secondary-foreground);
+}
+
 .btn-ghost {
   background-color: transparent;
   color: var(--foreground);
