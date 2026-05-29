@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Bright Scandinavian clinic interior illustration">
+  <defs>
+    <linearGradient id="fg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f9fb"/>
+      <stop offset="0.6" stop-color="#dcebf3"/>
+      <stop offset="1" stop-color="#b9d6e6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#fg)"/>
+  <rect x="80" y="120" width="420" height="560" rx="18" fill="#ffffff" opacity="0.7"/>
+  <rect x="120" y="170" width="340" height="220" rx="10" fill="#6ba2c4" opacity="0.35"/>
+  <rect x="120" y="420" width="160" height="20" rx="10" fill="#356d92" opacity="0.45"/>
+  <rect x="120" y="460" width="240" height="14" rx="7" fill="#356d92" opacity="0.25"/>
+  <circle cx="900" cy="300" r="220" fill="#ffffff" opacity="0.55"/>
+  <circle cx="950" cy="560" r="150" fill="#4885ac" opacity="0.22"/>
+  <path d="M560 760 q140 -90 320 -50 q200 44 320 -10 V900 H560 Z" fill="#356d92" opacity="0.16"/>
+  <g opacity="0.5" stroke="#356d92" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M620 250 h120 l40 -60 40 120 30 -60 h120"/>
+  </g>
+</svg>

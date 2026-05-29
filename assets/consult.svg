@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Specialist consultation illustration">
+  <defs>
+    <linearGradient id="cg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef5f9"/>
+      <stop offset="0.55" stop-color="#cfe3ee"/>
+      <stop offset="1" stop-color="#6ba2c4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#cg)"/>
+  <circle cx="320" cy="300" r="240" fill="#ffffff" opacity="0.4"/>
+  <circle cx="880" cy="640" r="280" fill="#356d92" opacity="0.12"/>
+  <g transform="translate(360 360)" opacity="0.9">
+    <circle cx="0" cy="-40" r="78" fill="#16293a" opacity="0.82"/>
+    <path d="M-120 230 q0 -180 120 -190 q120 10 120 190 Z" fill="#16293a" opacity="0.82"/>
+  </g>
+  <g transform="translate(760 420)" opacity="0.9">
+    <circle cx="0" cy="-30" r="62" fill="#356d92" opacity="0.7"/>
+    <path d="M-96 190 q0 -150 96 -158 q96 8 96 158 Z" fill="#356d92" opacity="0.7"/>
+  </g>
+  <path d="M0 780 q300 -70 600 -20 q300 50 600 -20 V900 H0 Z" fill="#ffffff" opacity="0.5"/>
+</svg>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact — Klar Clinic</title>
+    <meta
+      name="description"
+      content="Get in touch with Klar Clinic to book your shoulder or sports-injury consultation. Find our address, opening hours, parking and transit details, and an urgent-care line."
+    />
+    <meta name="theme-color" content="#356d92" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Set theme before first paint to avoid a flash of the light theme. -->
+    <script>
+      try {
+        if (localStorage.getItem("klar-theme") === "dark")
+          document.documentElement.classList.add("dark");
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ===================== Site header ===================== -->
+    <header class="site-header" data-site-header>
+      <div class="container">
+        <div class="site-header__inner">
+          <a class="brand" href="index.html" aria-label="Klar Clinic home">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18c0-6 2.5-9 8-9.5" /><path d="M7 18c3-1 5-3 5.5-6.5" /><circle cx="16" cy="8" r="2.2" fill="currentColor" stroke="none" /></svg>
+            </span>
+            Klar Clinic
+          </a>
+
+          <nav class="nav hidden lg:flex" data-nav aria-label="Primary">
+            <ul class="nav-list">
+              <li><a class="nav-link" href="index.html">Home</a></li>
+              <li><a class="nav-link" href="about.html">About</a></li>
+              <li><a class="nav-link" href="treatments.html">Treatments</a></li>
+              <li><a class="nav-link is-active" href="contact.html" aria-current="page">Contact</a></li>
+            </ul>
+          </nav>
+
+          <div class="nav-actions">
+            <button class="icon-btn" type="button" aria-label="Toggle theme" title="Toggle light / dark">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>
+            </button>
+            <a class="btn btn-primary btn-sm hidden lg:inline-flex" href="contact.html">Book consultation</a>
+            <button class="icon-btn nav-toggle lg:hidden" type="button" data-nav-toggle aria-expanded="false" aria-label="Open menu" aria-controls="mobile-menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="treatments.html">Treatments</a>
+        <a class="nav-link is-active" href="contact.html" aria-current="page">Contact</a>
+        <a class="btn btn-primary btn-block" href="contact.html">Book consultation</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ===================== Page header ===================== -->
+      <section class="page-header">
+        <div class="container">
+          <span class="eyebrow">Get in touch</span>
+          <h1 class="page-header__title">Book your consultation</h1>
+          <p class="page-header__lead">
+            No referral needed, no pressure. Tell us a little about what's going on with your
+            shoulder and our care team will be in touch within one business day to find a time
+            that works for you.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== Contact form + details ===================== -->
+      <section class="section">
+        <div class="container">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- LEFT: contact form -->
+            <div class="reveal">
+              <span class="eyebrow">Send us a message</span>
+              <h2 class="section-title">Request an appointment</h2>
+              <p class="section-lead mb-8">
+                Fill in the form below and we'll get back to you with the next available
+                consultation. Everything you share stays confidential.
+              </p>
+              <form class="flex flex-col gap-6" data-validate novalidate>
+                <div class="field">
+                  <label class="label" for="contact-name">Full name</label>
+                  <input class="input" id="contact-name" name="name" type="text" required placeholder="Jane Andersson" />
+                  <span class="field-error"></span>
+                </div>
+                <div class="field">
+                  <label class="label" for="contact-email">Email</label>
+                  <input class="input" id="contact-email" name="email" type="email" required placeholder="jane@example.com" />
+                  <span class="field-error"></span>
+                </div>
+                <div class="field">
+                  <label class="label" for="contact-phone">Phone</label>
+                  <input class="input" id="contact-phone" name="phone" type="tel" required placeholder="+46 70 123 45 67" />
+                  <span class="field-error"></span>
+                </div>
+                <div class="field">
+                  <label class="label" for="contact-reason">Reason for visit</label>
+                  <select class="select" id="contact-reason" name="reason">
+                    <option value="Shoulder pain">Shoulder pain</option>
+                    <option value="Sports injury">Sports injury</option>
+                    <option value="Post-surgery rehab">Post-surgery rehab</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <span class="field-error"></span>
+                </div>
+                <div class="field">
+                  <label class="label" for="contact-message">Message</label>
+                  <textarea class="textarea" id="contact-message" name="message" required placeholder="Tell us a little about your symptoms and what you'd like help with…"></textarea>
+                  <span class="field-error"></span>
+                </div>
+                <button class="btn btn-primary btn-lg" type="submit">Send request</button>
+                <p class="form-note" data-form-status role="status" hidden tabindex="-1"></p>
+              </form>
+            </div>
+
+            <!-- RIGHT: map + contact details -->
+            <div class="flex flex-col gap-6 reveal">
+              <div class="map-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
+              </div>
+              <div class="card">
+                <div class="card__body">
+                  <div class="info-item">
+                    <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg></span>
+                    <div>
+                      <div class="info-item__label">Address</div>
+                      <p class="info-item__value">14 Riverside Walk, Stockholm 111 49, Sweden</p>
+                    </div>
+                  </div>
+                  <div class="info-item">
+                    <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" /></svg></span>
+                    <div>
+                      <div class="info-item__label">Phone</div>
+                      <p class="info-item__value"><a href="tel:+4681234567">+46 8 123 45 67</a></p>
+                    </div>
+                  </div>
+                  <div class="info-item">
+                    <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-10 6L2 7" /></svg></span>
+                    <div>
+                      <div class="info-item__label">Email</div>
+                      <p class="info-item__value"><a href="mailto:hello@klarclinic.se">hello@klarclinic.se</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Opening hours ===================== -->
+      <section class="section bg-muted">
+        <div class="container">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+              <span class="eyebrow">Opening hours</span>
+              <h2 class="section-title">When you can visit us</h2>
+              <p class="section-lead">
+                We keep appointments open each week for new patients. If our doors are closed
+                when you need us, leave a message and we'll call you back first thing.
+              </p>
+            </div>
+            <div class="card reveal">
+              <div class="card__body">
+                <div class="info-item">
+                  <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg></span>
+                  <div class="flex items-center justify-between w-full gap-4">
+                    <span class="info-item__value font-semibold">Monday – Friday</span>
+                    <span class="info-item__value">8:00 – 18:00</span>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg></span>
+                  <div class="flex items-center justify-between w-full gap-4">
+                    <span class="info-item__value font-semibold">Saturday</span>
+                    <span class="info-item__value">9:00 – 14:00</span>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg></span>
+                  <div class="flex items-center justify-between w-full gap-4">
+                    <span class="info-item__value font-semibold">Sunday</span>
+                    <span class="info-item__value text-muted-foreground">Closed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Emergency contact ===================== -->
+      <section class="section">
+        <div class="container-narrow">
+          <div class="card reveal">
+            <div class="card__body">
+              <div class="flex items-start gap-4">
+                <span class="icon-badge icon-badge--lg bg-destructive text-destructive-foreground flex-shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>
+                </span>
+                <div class="flex flex-col gap-3">
+                  <span class="badge bg-destructive text-destructive-foreground">Urgent care</span>
+                  <h2 class="card__title text-2xl">Injured outside opening hours?</h2>
+                  <p class="card__text">
+                    For acute shoulder injuries that can't wait for an appointment, our urgent-care
+                    line is staffed by a clinician every day until 22:00. If you are experiencing a
+                    medical emergency, severe chest pain, or loss of sensation, please call 112
+                    immediately.
+                  </p>
+                  <p class="info-item__value text-xl font-semibold">
+                    Urgent line: <a href="tel:+4681234599">+46 8 123 45 99</a>
+                  </p>
+                  <div class="mt-4">
+                    <a class="btn btn-outline" href="tel:+4681234599">Call the urgent line</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Parking & transport ===================== -->
+      <section class="section bg-muted">
+        <div class="container">
+          <div class="section-head section-head--center mx-auto reveal">
+            <span class="eyebrow">Getting here</span>
+            <h2 class="section-title">Parking &amp; public transport</h2>
+            <p class="section-lead">
+              We're easy to reach by car, bus or metro — right on Riverside Walk in central
+              Stockholm.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
+            <div class="feature">
+              <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3v-6l2-5h9l4 5h2a2 2 0 0 1 2 2v4h-2" /><circle cx="7.5" cy="17.5" r="2" /><circle cx="17.5" cy="17.5" r="2" /></svg></span>
+              <div>
+                <h3 class="feature__title">By car</h3>
+                <p class="feature__text">
+                  Step-free underground parking is available directly beneath the building, with
+                  the first two hours free for patients — just bring your ticket to reception to
+                  validate it. Two accessible bays are reserved next to the lift.
+                </p>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6v6" /><path d="M16 6v6" /><path d="M2 12h19.6" /><path d="M18 18h.01" /><path d="M6 18h.01" /><rect x="4" y="4" width="16" height="16" rx="2" /></svg></span>
+              <div>
+                <h3 class="feature__title">By public transport</h3>
+                <p class="feature__text">
+                  We're a four-minute walk from Riverside metro station (blue and green lines), and
+                  bus routes 53, 76 and 96 stop at Riverside Walk right outside our door. Cycle
+                  racks are available at the main entrance.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Social media ===================== -->
+      <section class="section">
+        <div class="container-narrow">
+          <div class="section-head section-head--center mx-auto reveal">
+            <span class="eyebrow">Stay connected</span>
+            <h2 class="section-title">Follow Klar Clinic</h2>
+            <p class="section-lead">
+              Recovery tips, patient stories and clinic news — follow along wherever you spend
+              your time.
+            </p>
+          </div>
+          <div class="flex justify-center reveal">
+            <div class="footer-social">
+              <a href="#" aria-label="Klar Clinic on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z" /></svg></a>
+              <a href="#" aria-label="Klar Clinic on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg></a>
+              <a href="#" aria-label="Klar Clinic on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 7A1.94 1.94 0 1 1 7 3.13 1.94 1.94 0 0 1 6.94 7ZM5.5 9h2.9v9.5H5.5Zm5 0h2.78v1.3h.04a3 3 0 0 1 2.74-1.5c2.93 0 3.47 1.93 3.47 4.44v5.26h-2.9v-4.66c0-1.11 0-2.54-1.55-2.54s-1.78 1.21-1.78 2.46v4.74H10.5Z" /></svg></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================== Footer ===================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18c0-6 2.5-9 8-9.5" /><path d="M7 18c3-1 5-3 5.5-6.5" /><circle cx="16" cy="8" r="2.2" fill="currentColor" stroke="none" /></svg></span>Klar Clinic</a>
+            <p class="footer-about">Specialist shoulder, sports-injury and rehabilitation care — calm, expert, and built around you.</p>
+          </div>
+          <div>
+            <h4>Clinic</h4>
+            <div class="footer-links">
+              <a class="footer-link" href="about.html">About us</a>
+              <a class="footer-link" href="treatments.html">Treatments</a>
+              <a class="footer-link" href="contact.html">Contact</a>
+              <a class="footer-link" href="contact.html">Book consultation</a>
+            </div>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <div class="footer-links">
+              <span class="footer-link">14 Riverside Walk, Stockholm 111 49</span>
+              <a class="footer-link" href="tel:+4681234567">+46 8 123 45 67</a>
+              <a class="footer-link" href="mailto:hello@klarclinic.se">hello@klarclinic.se</a>
+            </div>
+          </div>
+          <div>
+            <h4>Hours</h4>
+            <div class="footer-links">
+              <span class="footer-link">Mon–Fri · 8:00–18:00</span>
+              <span class="footer-link">Saturday · 9:00–14:00</span>
+              <span class="footer-link">Sunday · Closed</span>
+            </div>
+            <div class="footer-social mt-6">
+              <a href="#" aria-label="Klar Clinic on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z" /></svg></a>
+              <a href="#" aria-label="Klar Clinic on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg></a>
+              <a href="#" aria-label="Klar Clinic on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 7A1.94 1.94 0 1 1 7 3.13 1.94 1.94 0 0 1 6.94 7ZM5.5 9h2.9v9.5H5.5Zm5 0h2.78v1.3h.04a3 3 0 0 1 2.74-1.5c2.93 0 3.47 1.93 3.47 4.44v5.26h-2.9v-4.66c0-1.11 0-2.54-1.55-2.54s-1.78 1.21-1.78 2.46v4.74H10.5Z" /></svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 Klar Clinic. All rights reserved.</span>
+          <span>Calm, expert shoulder &amp; rehabilitation care in Stockholm.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

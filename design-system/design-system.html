@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Klar Clinic — Design System</title>
+    <meta
+      name="description"
+      content="The living design system for Klar Clinic: tokens, components, and page-pattern sections rendered live from style.css."
+    />
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="stylesheet" href="../style.css" />
+    <!-- Set theme before first paint to avoid a flash of the light theme. -->
+    <script>
+      try {
+        if (localStorage.getItem("klar-theme") === "dark")
+          document.documentElement.classList.add("dark");
+      } catch (e) {}
+    </script>
+
+    <!-- ===================================================================
+         DOCUMENTATION CHROME ONLY — not part of the design system.
+         Every rule below is prefixed .ds- and exists purely to lay out this
+         style-guide page. None of it styles the components themselves; the
+         components are styled entirely by ../style.css.
+         =================================================================== -->
+    <style>
+      .ds-page {
+        padding-block: var(--space-16);
+      }
+      .ds-block {
+        padding-block: var(--space-16);
+        border-top: 1px solid var(--border);
+      }
+      .ds-block:first-child {
+        border-top: none;
+      }
+      .ds-subhead {
+        font-family: var(--font-sans);
+        font-size: var(--text-sm);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted-foreground);
+        margin: var(--space-12) 0 var(--space-6);
+      }
+      .ds-note {
+        color: var(--muted-foreground);
+        max-width: 60ch;
+        margin-top: var(--space-2);
+        margin-bottom: var(--space-8);
+        line-height: 1.7;
+      }
+      .ds-specimens {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-4);
+        align-items: center;
+      }
+      .ds-specimens--grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        align-items: stretch;
+      }
+      .ds-specimens--stack {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-12);
+      }
+      .ds-sections > * {
+        border: 1px dashed var(--border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+      }
+      .ds-swatches {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: var(--space-4);
+      }
+      .ds-swatch {
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background: var(--card);
+      }
+      .ds-swatch__chip {
+        height: 72px;
+      }
+      .ds-swatch__meta {
+        padding: var(--space-3);
+        font-size: var(--text-sm);
+      }
+      .ds-swatch__meta b {
+        display: block;
+        font-weight: 600;
+      }
+      .ds-swatch__meta code {
+        color: var(--muted-foreground);
+        font-size: var(--text-xs);
+        font-family: ui-monospace, Menlo, monospace;
+      }
+      .ds-type-row {
+        display: flex;
+        align-items: baseline;
+        gap: var(--space-6);
+        padding-block: var(--space-4);
+        border-bottom: 1px solid var(--border);
+        flex-wrap: wrap;
+      }
+      .ds-type-row code {
+        font-size: var(--text-xs);
+        color: var(--muted-foreground);
+        font-family: ui-monospace, Menlo, monospace;
+        min-width: 96px;
+      }
+      .ds-scale {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+      }
+      .ds-scale__row {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+      }
+      .ds-scale__bar {
+        height: 18px;
+        border-radius: 4px;
+        background: var(--primary);
+      }
+      .ds-scale__row code {
+        min-width: 90px;
+        font-size: var(--text-xs);
+        color: var(--muted-foreground);
+        font-family: ui-monospace, Menlo, monospace;
+      }
+      /* fixed bar widths to visualize the spacing token scale */
+      .ds-bar-1 { width: 4px; }
+      .ds-bar-2 { width: 8px; }
+      .ds-bar-3 { width: 12px; }
+      .ds-bar-4 { width: 16px; }
+      .ds-bar-6 { width: 24px; }
+      .ds-bar-8 { width: 32px; }
+      .ds-bar-12 { width: 48px; }
+      .ds-bar-16 { width: 64px; }
+      .ds-img-sq { width: 120px; }
+      .ds-img-vid { width: 200px; }
+      .ds-footer-plain {
+        border-top: none;
+        margin-top: 0;
+        padding-top: 0;
+      }
+      .ds-radius-row,
+      .ds-shadow-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-6);
+      }
+      .ds-tile {
+        width: 120px;
+        height: 92px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: flex-end;
+        padding: var(--space-2);
+        font-size: var(--text-xs);
+        color: var(--muted-foreground);
+        font-family: ui-monospace, Menlo, monospace;
+      }
+      .ds-tile--shadow {
+        border: none;
+      }
+      .ds-label {
+        font-size: var(--text-xs);
+        color: var(--muted-foreground);
+        font-family: ui-monospace, Menlo, monospace;
+        margin-bottom: var(--space-2);
+        display: block;
+      }
+      .ds-mini {
+        padding: var(--space-3);
+        border-radius: var(--radius-sm);
+        background: var(--muted);
+        color: var(--muted-foreground);
+        font-size: var(--text-sm);
+        text-align: center;
+      }
+      .ds-showcase-hero {
+        position: relative;
+        overflow: hidden;
+        padding-block: var(--space-16);
+        background: radial-gradient(60% 80% at 80% 0%, var(--color-blue-50), transparent 70%),
+          var(--background);
+      }
+      .dark .ds-showcase-hero {
+        background: radial-gradient(60% 80% at 80% 0%, rgba(72, 133, 172, 0.12), transparent 70%),
+          var(--background);
+      }
+      .ds-showcase-hero__inner {
+        max-width: 760px;
+      }
+      .ds-showcase-hero__title {
+        font-size: var(--text-5xl);
+        line-height: 1.05;
+        margin-block: var(--space-6);
+        background: linear-gradient(120deg, var(--foreground), var(--primary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .ds-showcase-hero__lead {
+        font-size: var(--text-xl);
+        color: var(--muted-foreground);
+        line-height: 1.6;
+        margin-bottom: var(--space-8);
+      }
+      .ds-showcase-hero__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-4);
+        margin-bottom: var(--space-12);
+      }
+      .ds-showcase-hero__stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-12);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== Sticky header — built from the system's OWN components ===== -->
+    <header class="site-header" data-site-header>
+      <div class="container">
+        <div class="site-header__inner">
+          <a class="brand" href="#top" aria-label="Klar Clinic home">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18c0-6 2.5-9 8-9.5" /><path d="M7 18c3-1 5-3 5.5-6.5" /><circle cx="16" cy="8" r="2.2" fill="currentColor" stroke="none" /></svg>
+            </span>
+            Klar Clinic
+          </a>
+
+          <nav class="nav" data-nav aria-label="Design system sections">
+            <ul class="nav-list">
+              <li><a class="nav-link" href="#colors">Foundations</a></li>
+              <li><a class="nav-link" href="#components">Components</a></li>
+              <li><a class="nav-link" href="#sections">Sections</a></li>
+            </ul>
+          </nav>
+
+          <div class="nav-actions">
+            <button class="icon-btn" type="button" aria-label="Toggle theme" title="Toggle light / dark">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>
+            </button>
+            <a class="btn btn-primary btn-sm" href="../contact.html">Book consultation</a>
+            <button class="icon-btn nav-toggle md:hidden" type="button" data-nav-toggle aria-expanded="false" aria-label="Open menu" aria-controls="ds-mobile-menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-menu" id="ds-mobile-menu" data-mobile-menu>
+        <a class="nav-link" href="#colors">Foundations</a>
+        <a class="nav-link" href="#components">Components</a>
+        <a class="nav-link" href="#sections">Sections</a>
+        <a class="btn btn-primary btn-block" href="../contact.html">Book consultation</a>
+      </div>
+    </header>
+
+    <!-- ===== Showcase hero (documentation chrome) ===== -->
+    <section class="ds-showcase-hero" id="top">
+      <div class="container">
+        <div class="ds-showcase-hero__inner">
+          <span class="badge">Design System · v1.0</span>
+          <h1 class="ds-showcase-hero__title">The Klar Clinic design language</h1>
+          <p class="ds-showcase-hero__lead">
+            Every token, component, and page-pattern section that builds the Klar Clinic
+            website — rendered live from a single <code>style.css</code>. Calm, Scandinavian,
+            and built to be edited in the browser.
+          </p>
+          <div class="ds-showcase-hero__actions">
+            <a class="btn btn-primary btn-lg" href="#components">Explore components</a>
+            <a class="btn btn-outline btn-lg" href="#sections">View sections</a>
+          </div>
+          <div class="ds-showcase-hero__stats">
+            <div class="stat"><span class="stat-value">8</span><span class="stat-label">Spacing steps</span></div>
+            <div class="stat"><span class="stat-value">9</span><span class="stat-label">Type sizes</span></div>
+            <div class="stat"><span class="stat-value">2</span><span class="stat-label">Themes</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="container ds-page">
+      <!-- ============================ FOUNDATIONS ============================ -->
+
+      <!-- Colors -->
+      <section class="ds-block" id="colors">
+        <h2 class="section-title">Colors</h2>
+        <p class="ds-note">
+          Semantic color tokens drive everything and remap automatically in dark mode.
+          Backgrounds, text, and borders below each map to a manifest group.
+        </p>
+
+        <h3 class="ds-subhead">Background &amp; surface</h3>
+        <div class="ds-swatches">
+          <div class="ds-swatch"><div class="ds-swatch__chip bg-background border-b border-muted"></div><div class="ds-swatch__meta"><b>Page</b><code>bg-background</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch__chip bg-card border-b border-muted"></div><div class="ds-swatch__meta"><b>Card surface</b><code>bg-card</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch__chip bg-muted"></div><div class="ds-swatch__meta"><b>Muted</b><code>bg-muted</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch__chip bg-accent"></div><div class="ds-swatch__meta"><b>Accent</b><code>bg-accent</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch__chip bg-primary"></div><div class="ds-swatch__meta"><b>Brand</b><code>bg-primary</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch__chip bg-secondary"></div><div class="ds-swatch__meta"><b>Secondary</b><code>bg-secondary</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch__chip bg-foreground"></div><div class="ds-swatch__meta"><b>Foreground</b><code>bg-foreground</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch__chip bg-destructive"></div><div class="ds-swatch__meta"><b>Destructive</b><code>bg-destructive</code></div></div>
+        </div>
+
+        <h3 class="ds-subhead">Text on surface</h3>
+        <div class="ds-specimens">
+          <span class="text-foreground font-semibold">Body text</span>
+          <span class="text-muted-foreground">Muted text</span>
+          <span class="text-primary font-semibold">Primary</span>
+          <span class="text-destructive font-semibold">Destructive</span>
+          <span class="bg-primary text-primary-foreground rounded-sm px-4 py-4">On brand</span>
+          <span class="bg-secondary text-secondary-foreground rounded-sm px-4 py-4">On secondary</span>
+          <span class="bg-accent text-accent-foreground rounded-sm px-4 py-4">On accent</span>
+        </div>
+
+        <h3 class="ds-subhead">Border color</h3>
+        <div class="ds-specimens">
+          <span class="ds-mini border-2 border-muted bg-card">border-muted</span>
+          <span class="ds-mini border-2 border-primary bg-card">border-primary</span>
+          <span class="ds-mini border-2 border-foreground bg-card">border-foreground</span>
+        </div>
+      </section>
+
+      <!-- Typography -->
+      <section class="ds-block" id="typography">
+        <h2 class="section-title">Typography</h2>
+        <p class="ds-note">
+          Serif headings (system Palatino/Georgia stack) paired with a humanist sans for
+          body. The scale below is the full set of <code>text-*</code> sizes.
+        </p>
+
+        <div class="ds-type-row"><code>text-5xl</code><span class="text-5xl font-bold tracking-tight font-serif">Calm, expert care</span></div>
+        <div class="ds-type-row"><code>text-4xl</code><span class="text-4xl font-bold tracking-tight font-serif">Calm, expert care</span></div>
+        <div class="ds-type-row"><code>text-3xl</code><span class="text-3xl font-semibold font-serif">Calm, expert care</span></div>
+        <div class="ds-type-row"><code>text-2xl</code><span class="text-2xl font-semibold font-serif">Calm, expert care</span></div>
+        <div class="ds-type-row"><code>text-xl</code><span class="text-xl font-medium">Calm, expert care</span></div>
+        <div class="ds-type-row"><code>text-lg</code><span class="text-lg">Calm, expert care</span></div>
+        <div class="ds-type-row"><code>text-base</code><span class="text-base">Calm, expert care</span></div>
+        <div class="ds-type-row"><code>text-sm</code><span class="text-sm">Calm, expert care</span></div>
+        <div class="ds-type-row"><code>text-xs</code><span class="text-xs">Calm, expert care</span></div>
+
+        <h3 class="ds-subhead">Weights</h3>
+        <div class="ds-specimens">
+          <span class="text-xl font-normal">Normal</span>
+          <span class="text-xl font-medium">Medium</span>
+          <span class="text-xl font-semibold">Semibold</span>
+          <span class="text-xl font-bold">Bold</span>
+        </div>
+
+        <h3 class="ds-subhead">Leading &amp; tracking</h3>
+        <div class="ds-specimens--grid ds-specimens">
+          <p class="leading-tight max-w-2xl">leading-tight — Recovery is rarely linear; our plans adapt at every visit to keep you progressing safely.</p>
+          <p class="leading-relaxed max-w-2xl">leading-relaxed — Recovery is rarely linear; our plans adapt at every visit to keep you progressing safely.</p>
+        </div>
+        <div class="ds-specimens mt-6">
+          <span class="text-lg tracking-tighter">tracking-tighter</span>
+          <span class="text-lg tracking-tight">tracking-tight</span>
+          <span class="text-lg tracking-normal">tracking-normal</span>
+          <span class="text-lg tracking-wide">tracking-wide</span>
+          <span class="text-lg tracking-wider uppercase">tracking-wider</span>
+        </div>
+
+        <h3 class="ds-subhead">Alignment &amp; decoration</h3>
+        <div class="ds-specimens">
+          <span class="text-left">text-left</span>
+          <span class="text-center">text-center</span>
+          <span class="text-right">text-right</span>
+          <span class="italic">italic</span>
+          <span class="underline">underline</span>
+          <span class="uppercase">uppercase</span>
+          <span class="font-sans">font-sans</span>
+          <span class="font-serif text-lg">font-serif</span>
+        </div>
+      </section>
+
+      <!-- Spacing -->
+      <section class="ds-block" id="spacing">
+        <h2 class="section-title">Spacing</h2>
+        <p class="ds-note">
+          One tight, rhythmic scale powers every gap, margin, and padding utility.
+        </p>
+        <div class="ds-scale">
+          <div class="ds-scale__row"><code>space-1 · 4</code><span class="ds-scale__bar ds-bar-1"></span></div>
+          <div class="ds-scale__row"><code>space-2 · 8</code><span class="ds-scale__bar ds-bar-2"></span></div>
+          <div class="ds-scale__row"><code>space-3 · 12</code><span class="ds-scale__bar ds-bar-3"></span></div>
+          <div class="ds-scale__row"><code>space-4 · 16</code><span class="ds-scale__bar ds-bar-4"></span></div>
+          <div class="ds-scale__row"><code>space-6 · 24</code><span class="ds-scale__bar ds-bar-6"></span></div>
+          <div class="ds-scale__row"><code>space-8 · 32</code><span class="ds-scale__bar ds-bar-8"></span></div>
+          <div class="ds-scale__row"><code>space-12 · 48</code><span class="ds-scale__bar ds-bar-12"></span></div>
+          <div class="ds-scale__row"><code>space-16 · 64</code><span class="ds-scale__bar ds-bar-16"></span></div>
+        </div>
+
+        <h3 class="ds-subhead">Padding utility (live)</h3>
+        <div class="ds-specimens">
+          <span class="p-4 bg-accent rounded-sm text-accent-foreground">p-4</span>
+          <span class="p-6 bg-accent rounded-sm text-accent-foreground">p-6</span>
+          <span class="p-8 bg-accent rounded-sm text-accent-foreground">p-8</span>
+          <span class="p-12 bg-accent rounded-sm text-accent-foreground">p-12</span>
+        </div>
+      </section>
+
+      <!-- Layout utilities -->
+      <section class="ds-block" id="layout">
+        <h2 class="section-title">Layout &amp; effects</h2>
+        <p class="ds-note">Display, flexbox, grid, sizing, position, object-fit and effects — the building blocks for arranging components.</p>
+
+        <h3 class="ds-subhead">Flex (flex · gap · items-center · justify-between)</h3>
+        <div class="flex items-center justify-between gap-4 p-4 bg-muted rounded-md">
+          <span class="badge badge-primary">Start</span>
+          <span class="badge">Middle</span>
+          <span class="badge badge-secondary">End</span>
+        </div>
+
+        <h3 class="ds-subhead">Grid (grid · grid-cols-3 · gap-4)</h3>
+        <div class="grid grid-cols-3 gap-4">
+          <div class="ds-mini">col</div><div class="ds-mini">col</div><div class="ds-mini">col</div>
+        </div>
+
+        <h3 class="ds-subhead">Object-fit &amp; aspect</h3>
+        <div class="ds-specimens">
+          <img class="object-cover aspect-square rounded-md ds-img-sq" src="../assets/portrait-1.svg" alt="aspect-square specimen" width="120" height="120" loading="lazy" />
+          <img class="object-cover aspect-video rounded-md ds-img-vid" src="../assets/facility.svg" alt="aspect-video specimen" width="200" height="113" loading="lazy" />
+        </div>
+      </section>
+
+      <!-- Borders, radius, shadows -->
+      <section class="ds-block" id="radius">
+        <h2 class="section-title">Borders, radius &amp; elevation</h2>
+        <p class="ds-note">Border widths, corner radii, and the three-step shadow scale.</p>
+
+        <h3 class="ds-subhead">Border width</h3>
+        <div class="ds-specimens">
+          <span class="ds-mini border border-foreground bg-card">border</span>
+          <span class="ds-mini border-2 border-foreground bg-card">border-2</span>
+          <span class="ds-mini border-4 border-foreground bg-card">border-4</span>
+          <span class="ds-mini border-l-4 border-primary bg-card">border-l-4</span>
+          <span class="ds-mini border-b-2 border-primary bg-card">border-b-2</span>
+        </div>
+
+        <h3 class="ds-subhead">Radius</h3>
+        <div class="ds-radius-row">
+          <div class="ds-tile rounded-none">rounded-none</div>
+          <div class="ds-tile rounded-sm">rounded-sm</div>
+          <div class="ds-tile rounded-md">rounded-md</div>
+          <div class="ds-tile rounded-lg">rounded-lg</div>
+          <div class="ds-tile rounded-full">rounded-full</div>
+        </div>
+
+        <h3 class="ds-subhead">Shadows</h3>
+        <div class="ds-shadow-row">
+          <div class="ds-tile ds-tile--shadow rounded-md shadow-sm bg-card">shadow-sm</div>
+          <div class="ds-tile ds-tile--shadow rounded-md shadow-md bg-card">shadow-md</div>
+          <div class="ds-tile ds-tile--shadow rounded-md shadow-lg bg-card">shadow-lg</div>
+        </div>
+      </section>
+
+      <!-- Rich text -->
+      <section class="ds-block" id="richtext">
+        <h2 class="section-title">Rich text</h2>
+        <p class="ds-note">
+          The <code>.prose</code> wrapper styles CMS-rendered article bodies — apply it to any
+          long-form content container.
+        </p>
+        <div class="prose">
+          <h2>Understanding shoulder recovery</h2>
+          <p>
+            The shoulder is the most mobile joint in the body, which is exactly why it is so
+            vulnerable to injury. A structured rehabilitation plan restores both
+            <a href="../treatments.html">strength and confidence</a> — usually without surgery.
+          </p>
+          <h3>What a good plan includes</h3>
+          <ul>
+            <li>A precise diagnosis from hands-on assessment and imaging.</li>
+            <li>Graded, progressive loading tailored to your goals.</li>
+            <li>Clear milestones so you always know what comes next.</li>
+          </ul>
+          <blockquote>
+            “Movement is medicine — when it is dosed correctly and guided by someone who
+            understands the joint.”
+          </blockquote>
+          <p>
+            Most patients notice meaningful change within the first <code>six weeks</code>. The
+            ordered steps below summarise a typical pathway:
+          </p>
+          <ol>
+            <li>Calm the joint and reduce irritation.</li>
+            <li>Rebuild range of motion.</li>
+            <li>Restore strength and return to sport or work.</li>
+          </ol>
+          <figure>
+            <img src="../assets/therapy.svg" alt="Illustration of a guided rehabilitation exercise" loading="lazy" />
+            <figcaption>Guided, progressive loading is the cornerstone of recovery.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ========================= COMPONENT LIBRARY ========================= -->
+      <section class="ds-block" id="components">
+        <h2 class="section-title">Component library</h2>
+        <p class="ds-note">
+          Each group below is harvestable by the editor. Link forms are listed first so a
+          call-to-action can be inserted as an anchor.
+        </p>
+
+        <!-- Buttons -->
+        <h3 class="ds-subhead">Buttons</h3>
+        <div class="ds-specimens" data-klar-ds-elements="buttons" data-klar-ds-label="Buttons">
+          <a class="btn btn-primary" href="#" data-klar-ds-label="Primary link">Book consultation</a>
+          <button class="btn btn-primary" type="button" data-klar-ds-label="Primary button">Book consultation</button>
+          <a class="btn btn-secondary" href="#" data-klar-ds-label="Secondary link">Our treatments</a>
+          <button class="btn btn-secondary" type="button" data-klar-ds-label="Secondary button">Our treatments</button>
+          <a class="btn btn-outline" href="#" data-klar-ds-label="Outline link">Learn more</a>
+          <button class="btn btn-outline" type="button" data-klar-ds-label="Outline button">Learn more</button>
+          <button class="btn btn-ghost" type="button" data-klar-ds-label="Ghost button">Cancel</button>
+          <a class="btn btn-primary btn-lg" href="#" data-klar-ds-label="Large link">Large</a>
+          <button class="btn btn-primary btn-sm" type="button" data-klar-ds-label="Small button">Small</button>
+        </div>
+
+        <!-- Call-to-action links -->
+        <h3 class="ds-subhead">Call-to-action links</h3>
+        <div class="ds-specimens" data-klar-ds-elements="cta-links" data-klar-ds-label="CTA links">
+          <a class="cta-link" href="#" data-klar-ds-label="Read more link">
+            Read more
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+          </a>
+          <a class="cta-link" href="#" data-klar-ds-label="Explore link">
+            Explore treatments
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+          </a>
+        </div>
+
+        <!-- Navigation links -->
+        <h3 class="ds-subhead">Navigation links</h3>
+        <div class="ds-specimens" data-klar-ds-elements="nav-links" data-klar-ds-label="Navigation links">
+          <a class="nav-link" href="#" data-klar-ds-label="Nav link">Treatments</a>
+          <a class="nav-link is-active" href="#" data-klar-ds-label="Nav link active">Home</a>
+        </div>
+
+        <!-- Badges -->
+        <h3 class="ds-subhead">Badges</h3>
+        <div class="ds-specimens" data-klar-ds-elements="badges" data-klar-ds-label="Badges">
+          <span class="badge" data-klar-ds-label="Accent badge">Accepting patients</span>
+          <span class="badge badge-primary" data-klar-ds-label="Primary badge">New</span>
+          <span class="badge badge-secondary" data-klar-ds-label="Secondary badge">Featured</span>
+          <span class="badge badge-muted" data-klar-ds-label="Muted badge">Non-surgical</span>
+        </div>
+
+        <!-- Tags -->
+        <h3 class="ds-subhead">Tags</h3>
+        <div class="ds-specimens" data-klar-ds-elements="tags" data-klar-ds-label="Tags">
+          <span class="tag" data-klar-ds-label="Tag">Rotator cuff</span>
+          <span class="tag" data-klar-ds-label="Tag">Frozen shoulder</span>
+          <span class="tag" data-klar-ds-label="Tag">Sports injury</span>
+        </div>
+
+        <!-- Cards -->
+        <h3 class="ds-subhead">Cards</h3>
+        <div class="ds-specimens--grid ds-specimens" data-klar-ds-elements="cards" data-klar-ds-label="Cards">
+          <article class="card card--hover" data-klar-ds-label="Condition card">
+            <div class="card__body">
+              <span class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
+              </span>
+              <h4 class="card__title">Rotator cuff injuries</h4>
+              <p class="card__text">Targeted strengthening and load management to repair and protect the tendons that stabilise your shoulder.</p>
+              <a class="cta-link" href="../treatments.html">Learn more
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="card card--hover" data-klar-ds-label="Image card">
+            <div class="card__media">
+              <img src="../assets/consult.svg" alt="A specialist consultation in progress" loading="lazy" width="400" height="250" />
+            </div>
+            <div class="card__body">
+              <span class="badge badge-muted">Assessment</span>
+              <h4 class="card__title">Orthopaedic assessment</h4>
+              <p class="card__text">A thorough, unhurried first visit to pinpoint the source of your pain and map the path forward.</p>
+            </div>
+          </article>
+
+          <figure class="card" data-klar-ds-label="Testimonial card">
+            <div class="card__body">
+              <span class="quote-stars" role="img" aria-label="5 out of 5 stars">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg>
+              </span>
+              <blockquote class="quote">“After two years of pain I have my golf swing back. The team explained every step and never rushed me.”</blockquote>
+              <figcaption class="flex items-center gap-3 mt-4">
+                <img class="avatar" src="../assets/portrait-2.svg" alt="" loading="lazy" width="56" height="56" />
+                <span><b class="block">Margaret Holloway</b><span class="text-sm text-muted-foreground">Rotator cuff recovery</span></span>
+              </figcaption>
+            </div>
+          </figure>
+
+          <article class="card card--hover" data-klar-ds-label="Specialist card">
+            <div class="card__media aspect-square">
+              <img src="../assets/portrait-1.svg" alt="Portrait of Dr. Elin Sandström" loading="lazy" width="400" height="400" />
+            </div>
+            <div class="card__body">
+              <h4 class="card__title">Dr. Elin Sandström</h4>
+              <p class="text-primary font-semibold text-sm">Orthopaedic Surgeon</p>
+              <p class="card__text">Shoulder reconstruction and complex rotator cuff repair, with 18 years in sports medicine.</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Statistics -->
+        <h3 class="ds-subhead">Statistics</h3>
+        <div class="ds-specimens" data-klar-ds-elements="stats" data-klar-ds-label="Statistics">
+          <div class="stat" data-klar-ds-label="Statistic"><span class="stat-value">15k+</span><span class="stat-label">Patients treated</span></div>
+          <div class="stat" data-klar-ds-label="Statistic"><span class="stat-value">96%</span><span class="stat-label">Patient satisfaction</span></div>
+          <div class="stat" data-klar-ds-label="Statistic"><span class="stat-value">20+</span><span class="stat-label">Years of expertise</span></div>
+        </div>
+
+        <!-- Process steps -->
+        <h3 class="ds-subhead">Process steps</h3>
+        <div class="ds-specimens--grid ds-specimens" data-klar-ds-elements="steps" data-klar-ds-label="Process steps">
+          <div class="step" data-klar-ds-label="Process step">
+            <span class="step__number">1</span>
+            <h4 class="step__title">Consultation</h4>
+            <p class="step__text">We listen to your history and goals in an unhurried first visit.</p>
+          </div>
+          <div class="step" data-klar-ds-label="Process step">
+            <span class="step__number">2</span>
+            <h4 class="step__title">Diagnosis</h4>
+            <p class="step__text">Hands-on testing and imaging pinpoint the true source of pain.</p>
+          </div>
+        </div>
+
+        <!-- Feature items -->
+        <h3 class="ds-subhead">Feature items</h3>
+        <div class="ds-specimens--grid ds-specimens" data-klar-ds-elements="features" data-klar-ds-label="Feature items">
+          <div class="feature" data-klar-ds-label="Feature item">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span>
+            <div><h4 class="feature__title">Evidence-based</h4><p class="feature__text">Every plan is grounded in current orthopaedic research.</p></div>
+          </div>
+          <div class="feature" data-klar-ds-label="Feature item">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z" /></svg></span>
+            <div><h4 class="feature__title">Faster recovery</h4><p class="feature__text">Structured loading gets you back to life sooner, safely.</p></div>
+          </div>
+        </div>
+
+        <!-- Checklist -->
+        <h3 class="ds-subhead">Checklist</h3>
+        <div class="ds-specimens" data-klar-ds-elements="checklists" data-klar-ds-label="Checklist">
+          <ul class="checklist" data-klar-ds-label="Checklist">
+            <li>One-to-one sessions with a named specialist</li>
+            <li>On-site diagnostic imaging</li>
+            <li>Personalised home exercise programme</li>
+          </ul>
+        </div>
+
+        <!-- Forms -->
+        <h3 class="ds-subhead">Form controls</h3>
+        <div class="ds-specimens--grid ds-specimens" data-klar-ds-elements="forms" data-klar-ds-label="Form controls">
+          <div class="field" data-klar-ds-label="Text field">
+            <label class="label" for="ds-name">Full name</label>
+            <input class="input" id="ds-name" type="text" placeholder="Jane Andersson" />
+            <span class="field-error"></span>
+          </div>
+          <div class="field" data-klar-ds-label="Select field">
+            <label class="label" for="ds-topic">Reason for visit</label>
+            <select class="select" id="ds-topic">
+              <option>Shoulder pain</option>
+              <option>Sports injury</option>
+              <option>Post-surgery rehab</option>
+            </select>
+            <span class="field-error"></span>
+          </div>
+          <div class="field" data-klar-ds-label="Textarea field">
+            <label class="label" for="ds-msg">Message</label>
+            <textarea class="textarea" id="ds-msg" placeholder="Tell us a little about your symptoms…"></textarea>
+            <span class="field-error"></span>
+          </div>
+          <div class="field is-invalid" data-klar-ds-label="Invalid field">
+            <label class="label" for="ds-email">Email (invalid state)</label>
+            <input class="input" id="ds-email" type="email" value="not-an-email" />
+            <span class="field-error">Please enter a valid email address.</span>
+          </div>
+        </div>
+
+        <!-- Accordion -->
+        <h3 class="ds-subhead">Accordion</h3>
+        <div class="ds-specimens--stack ds-specimens" data-klar-ds-elements="accordions" data-klar-ds-label="Accordion">
+          <div class="accordion" data-klar-ds-label="Accordion">
+            <div class="accordion-item is-open" data-accordion-item>
+              <button class="accordion-trigger" type="button" aria-expanded="true">
+                Will I need surgery?
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14" /><path d="M5 12h14" /></svg>
+              </button>
+              <div class="accordion-panel"><div class="accordion-panel__inner">The large majority of shoulder problems resolve with structured rehabilitation. Surgery is only ever recommended when it is genuinely the best option for you.</div></div>
+            </div>
+            <div class="accordion-item" data-accordion-item>
+              <button class="accordion-trigger" type="button" aria-expanded="false">
+                How long does recovery take?
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14" /><path d="M5 12h14" /></svg>
+              </button>
+              <div class="accordion-panel"><div class="accordion-panel__inner">Most patients feel meaningful improvement within six weeks, with full recovery typically between three and six months depending on the condition.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Layout primitives: Container -->
+        <h3 class="ds-subhead">Container</h3>
+        <div class="ds-specimens--stack ds-specimens" data-klar-ds-elements="containers" data-klar-ds-label="Container">
+          <div class="container" data-klar-ds-label="Default">
+            <div class="ds-mini">Default container — max 1120px</div>
+          </div>
+          <div class="container-narrow" data-klar-ds-label="Narrow">
+            <div class="ds-mini">Narrow container — max 720px</div>
+          </div>
+          <div class="container-wide" data-klar-ds-label="Wide">
+            <div class="ds-mini">Wide container — max 1320px</div>
+          </div>
+        </div>
+
+        <!-- Layout primitives: Grid -->
+        <h3 class="ds-subhead">Grid</h3>
+        <div class="ds-specimens--stack ds-specimens" data-klar-ds-elements="grids" data-klar-ds-label="Grid">
+          <div class="grid grid-cols-2 gap-4" data-klar-ds-label="2 columns">
+            <div class="ds-mini">1</div><div class="ds-mini">2</div>
+          </div>
+          <div class="grid grid-cols-3 gap-4" data-klar-ds-label="3 columns">
+            <div class="ds-mini">1</div><div class="ds-mini">2</div><div class="ds-mini">3</div>
+          </div>
+          <div class="grid grid-cols-4 gap-4" data-klar-ds-label="4 columns">
+            <div class="ds-mini">1</div><div class="ds-mini">2</div><div class="ds-mini">3</div><div class="ds-mini">4</div>
+          </div>
+        </div>
+
+        <!-- Layout primitives: Container and Grid -->
+        <h3 class="ds-subhead">Container and Grid</h3>
+        <div class="ds-specimens--stack ds-specimens" data-klar-ds-elements="containers-and-grids" data-klar-ds-label="Container and Grid">
+          <div class="container grid grid-cols-2 gap-4" data-klar-ds-label="Default · 2 cols"><div class="ds-mini">1</div><div class="ds-mini">2</div></div>
+          <div class="container grid grid-cols-3 gap-4" data-klar-ds-label="Default · 3 cols"><div class="ds-mini">1</div><div class="ds-mini">2</div><div class="ds-mini">3</div></div>
+          <div class="container grid grid-cols-4 gap-4" data-klar-ds-label="Default · 4 cols"><div class="ds-mini">1</div><div class="ds-mini">2</div><div class="ds-mini">3</div><div class="ds-mini">4</div></div>
+          <div class="container-narrow grid grid-cols-2 gap-4" data-klar-ds-label="Narrow · 2 cols"><div class="ds-mini">1</div><div class="ds-mini">2</div></div>
+          <div class="container-narrow grid grid-cols-3 gap-4" data-klar-ds-label="Narrow · 3 cols"><div class="ds-mini">1</div><div class="ds-mini">2</div><div class="ds-mini">3</div></div>
+          <div class="container-narrow grid grid-cols-4 gap-4" data-klar-ds-label="Narrow · 4 cols"><div class="ds-mini">1</div><div class="ds-mini">2</div><div class="ds-mini">3</div><div class="ds-mini">4</div></div>
+          <div class="container-wide grid grid-cols-2 gap-4" data-klar-ds-label="Wide · 2 cols"><div class="ds-mini">1</div><div class="ds-mini">2</div></div>
+          <div class="container-wide grid grid-cols-3 gap-4" data-klar-ds-label="Wide · 3 cols"><div class="ds-mini">1</div><div class="ds-mini">2</div><div class="ds-mini">3</div></div>
+          <div class="container-wide grid grid-cols-4 gap-4" data-klar-ds-label="Wide · 4 cols"><div class="ds-mini">1</div><div class="ds-mini">2</div><div class="ds-mini">3</div><div class="ds-mini">4</div></div>
+        </div>
+      </section>
+
+      <!-- ============================== SECTIONS ============================== -->
+      <section class="ds-block" id="sections">
+        <h2 class="section-title">Sections</h2>
+        <p class="ds-note">
+          Template-ready page patterns. Each is a single, self-contained root section the
+          editor can insert directly into a page.
+        </p>
+
+        <div class="ds-specimens--stack ds-specimens ds-sections" data-klar-ds-elements="Sections">
+          <!-- Header -->
+          <header class="site-header" data-klar-ds-label="Header">
+            <div class="container">
+              <div class="site-header__inner">
+                <a class="brand" href="index.html" aria-label="Klar Clinic home">
+                  <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18c0-6 2.5-9 8-9.5" /><path d="M7 18c3-1 5-3 5.5-6.5" /><circle cx="16" cy="8" r="2.2" fill="currentColor" stroke="none" /></svg></span>
+                  Klar Clinic
+                </a>
+                <nav class="nav" data-nav aria-label="Primary">
+                  <ul class="nav-list">
+                    <li><a class="nav-link" href="index.html">Home</a></li>
+                    <li><a class="nav-link" href="about.html">About</a></li>
+                    <li><a class="nav-link" href="treatments.html">Treatments</a></li>
+                    <li><a class="nav-link" href="contact.html">Contact</a></li>
+                  </ul>
+                </nav>
+                <div class="nav-actions">
+                  <button class="icon-btn" type="button" aria-label="Toggle theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg></button>
+                  <a class="btn btn-primary btn-sm" href="contact.html">Book consultation</a>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <!-- Page header (interior-page hero) -->
+          <section class="page-header" data-klar-ds-label="Page header">
+            <div class="container">
+              <span class="eyebrow">Treatments &amp; rehabilitation</span>
+              <h2 class="page-header__title">Shoulder treatments &amp; rehabilitation</h2>
+              <p class="page-header__lead">From precise diagnosis to a guided return to full movement, we treat every shoulder condition with proven, non-surgical-first care — calm, expert, and built entirely around you.</p>
+            </div>
+          </section>
+
+          <!-- Hero -->
+          <section class="hero" data-klar-ds-label="Hero">
+            <div class="container">
+              <div class="hero-grid">
+                <div>
+                  <span class="eyebrow">Shoulder &amp; sports injury specialists</span>
+                  <h2 class="hero-title">Move freely again, without the fear of pain</h2>
+                  <p class="hero-lead">Klar Clinic combines orthopaedic expertise with personalised physiotherapy to help you recover fully — and stay that way.</p>
+                  <div class="hero-actions">
+                    <a class="btn btn-primary btn-lg" href="contact.html">Book consultation</a>
+                    <a class="btn btn-outline btn-lg" href="treatments.html">Explore treatments</a>
+                  </div>
+                </div>
+                <div class="hero-media">
+                  <img src="../assets/hero.svg" alt="A calm clinical setting representing expert shoulder care" width="800" height="1000" />
+                  <div class="hero-floatcard">
+                    <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span>
+                    <span><b class="block">96% patient satisfaction</b><span class="text-sm text-muted-foreground">Across 15,000+ recoveries</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Trust bar -->
+          <section class="section" data-klar-ds-label="Trust bar">
+            <div class="container">
+              <div class="trust-bar">
+                <div class="stat"><span class="stat-value">20+</span><span class="stat-label">Years of expertise</span></div>
+                <div class="stat"><span class="stat-value">15k+</span><span class="stat-label">Patients treated</span></div>
+                <div class="stat"><span class="stat-value">96%</span><span class="stat-label">Patient satisfaction</span></div>
+                <div class="stat"><span class="stat-value">8</span><span class="stat-label">Specialist clinicians</span></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Card grid (conditions) -->
+          <section class="section" data-klar-ds-label="Card grid">
+            <div class="container">
+              <div class="section-head section-head--center">
+                <span class="eyebrow">Conditions we treat</span>
+                <h2 class="section-title">Expert care for every shoulder condition</h2>
+                <p class="section-lead">From acute sports injuries to long-standing stiffness, we diagnose precisely and treat with proven, non-surgical-first methods.</p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <article class="card card--hover">
+                  <div class="card__body">
+                    <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg></span>
+                    <h3 class="card__title">Rotator cuff injuries</h3>
+                    <p class="card__text">Strengthening and load management to repair the tendons that stabilise your shoulder.</p>
+                  </div>
+                </article>
+                <article class="card card--hover">
+                  <div class="card__body">
+                    <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg></span>
+                    <h3 class="card__title">Frozen shoulder</h3>
+                    <p class="card__text">A staged programme to restore range of motion and break the pain–stiffness cycle.</p>
+                  </div>
+                </article>
+                <article class="card card--hover">
+                  <div class="card__body">
+                    <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /></svg></span>
+                    <h3 class="card__title">Shoulder impingement</h3>
+                    <p class="card__text">Correcting movement patterns to relieve pinching and restore pain-free overhead motion.</p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <!-- Feature split -->
+          <section class="section" data-klar-ds-label="Feature split">
+            <div class="container">
+              <div class="split">
+                <div class="split-media"><img src="../assets/consult.svg" alt="A specialist reviewing a treatment plan with a patient" loading="lazy" width="800" height="600" /></div>
+                <div>
+                  <span class="eyebrow">Why Klar Clinic</span>
+                  <h2 class="section-title">A clinic built around your recovery</h2>
+                  <p class="section-lead mb-8">We treat people, not just scans. Every plan is shaped around your goals, your sport, and your life.</p>
+                  <ul class="checklist">
+                    <li>Evidence-based treatment grounded in current research</li>
+                    <li>One named specialist who follows your whole journey</li>
+                    <li>On-site diagnostics for answers in a single visit</li>
+                    <li>Personalised rehab plans, reviewed at every step</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Process timeline -->
+          <section class="section" data-klar-ds-label="Process timeline">
+            <div class="container">
+              <div class="section-head section-head--center">
+                <span class="eyebrow">How it works</span>
+                <h2 class="section-title">Your path to recovery</h2>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div class="step"><span class="step__number">1</span><h3 class="step__title">Consultation</h3><p class="step__text">We listen to your history and goals in an unhurried first visit.</p></div>
+                <div class="step"><span class="step__number">2</span><h3 class="step__title">Diagnosis</h3><p class="step__text">Hands-on testing and imaging pinpoint the source of pain.</p></div>
+                <div class="step"><span class="step__number">3</span><h3 class="step__title">Treatment</h3><p class="step__text">A personalised plan combining therapy and expert guidance.</p></div>
+                <div class="step"><span class="step__number">4</span><h3 class="step__title">Recovery</h3><p class="step__text">Progressive milestones return you to full, confident movement.</p></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Text content (prose) -->
+          <section class="section" data-klar-ds-label="Text content">
+            <div class="container-narrow">
+              <div class="prose">
+                <span class="eyebrow">Patient guide</span>
+                <h2>What to expect from shoulder rehabilitation</h2>
+                <p>Shoulder pain can make the simplest movements — reaching for a shelf, sleeping on one side — feel daunting. The good news is that the vast majority of shoulder conditions improve significantly with the right structured programme, no surgery required.</p>
+                <h3>The phases of recovery</h3>
+                <p>Recovery generally moves through three overlapping phases. First we calm the joint and reduce irritation. Next we restore range of motion. Finally we rebuild the strength and control that protect you long-term.</p>
+                <ul>
+                  <li>Phase one: settle pain and protect the joint.</li>
+                  <li>Phase two: rebuild flexibility and movement.</li>
+                  <li>Phase three: restore strength and return to activity.</li>
+                </ul>
+                <blockquote>“The goal is never just less pain — it is a shoulder you trust again.”</blockquote>
+                <p>Throughout, your specialist adjusts the plan to how your body responds, so progress stays steady and safe.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Testimonials -->
+          <section class="section" data-klar-ds-label="Testimonials">
+            <div class="container">
+              <div class="section-head section-head--center">
+                <span class="eyebrow">Patient stories</span>
+                <h2 class="section-title">Recoveries that change lives</h2>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <figure class="card">
+                  <div class="card__body">
+                    <span class="quote-stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg></span>
+                    <blockquote class="quote">“I came in barely able to lift my arm. Twelve weeks later I was back to swimming. I cannot recommend them enough.”</blockquote>
+                    <figcaption class="flex items-center gap-3 mt-4"><img class="avatar" src="../assets/portrait-3.svg" alt="" loading="lazy" width="56" height="56" /><span><b class="block">Daniel Owusu</b><span class="text-sm text-muted-foreground">Frozen shoulder</span></span></figcaption>
+                  </div>
+                </figure>
+                <figure class="card">
+                  <div class="card__body">
+                    <span class="quote-stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg></span>
+                    <blockquote class="quote">“Professional, warm, and genuinely invested in my progress. The home programme made all the difference.”</blockquote>
+                    <figcaption class="flex items-center gap-3 mt-4"><img class="avatar" src="../assets/portrait-4.svg" alt="" loading="lazy" width="56" height="56" /><span><b class="block">Sofia Lindqvist</b><span class="text-sm text-muted-foreground">Sports injury</span></span></figcaption>
+                  </div>
+                </figure>
+                <figure class="card">
+                  <div class="card__body">
+                    <span class="quote-stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9Z" /></svg></span>
+                    <blockquote class="quote">“After surgery elsewhere I was stuck. Klar's rehab team finally got me moving without pain.”</blockquote>
+                    <figcaption class="flex items-center gap-3 mt-4"><img class="avatar" src="../assets/portrait-1.svg" alt="" loading="lazy" width="56" height="56" /><span><b class="block">James Mercer</b><span class="text-sm text-muted-foreground">Post-surgery recovery</span></span></figcaption>
+                  </div>
+                </figure>
+              </div>
+            </div>
+          </section>
+
+          <!-- Specialists grid -->
+          <section class="section" data-klar-ds-label="Specialists grid">
+            <div class="container">
+              <div class="section-head section-head--center">
+                <span class="eyebrow">Meet the team</span>
+                <h2 class="section-title">Specialists who stay with you</h2>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <article class="card card--hover"><div class="card__media aspect-square"><img src="../assets/portrait-1.svg" alt="Portrait of Dr. Elin Sandström" loading="lazy" width="400" height="400" /></div><div class="card__body"><h3 class="card__title">Dr. Elin Sandström</h3><p class="text-primary font-semibold text-sm">Orthopaedic Surgeon</p><p class="card__text">Shoulder reconstruction and complex rotator cuff repair.</p></div></article>
+                <article class="card card--hover"><div class="card__media aspect-square"><img src="../assets/portrait-2.svg" alt="Portrait of Dr. Marcus Bergman" loading="lazy" width="400" height="400" /></div><div class="card__body"><h3 class="card__title">Dr. Marcus Bergman</h3><p class="text-primary font-semibold text-sm">Sports Physician</p><p class="card__text">Return-to-sport rehabilitation for athletes of every level.</p></div></article>
+                <article class="card card--hover"><div class="card__media aspect-square"><img src="../assets/portrait-3.svg" alt="Portrait of Anna Whitfield" loading="lazy" width="400" height="400" /></div><div class="card__body"><h3 class="card__title">Anna Whitfield</h3><p class="text-primary font-semibold text-sm">Lead Physiotherapist</p><p class="card__text">Hands-on therapy and progressive loading programmes.</p></div></article>
+                <article class="card card--hover"><div class="card__media aspect-square"><img src="../assets/portrait-4.svg" alt="Portrait of Dr. Omar Haddad" loading="lazy" width="400" height="400" /></div><div class="card__body"><h3 class="card__title">Dr. Omar Haddad</h3><p class="text-primary font-semibold text-sm">Pain Management</p><p class="card__text">Targeted, conservative approaches to persistent shoulder pain.</p></div></article>
+              </div>
+            </div>
+          </section>
+
+          <!-- FAQ -->
+          <section class="section" data-klar-ds-label="FAQ">
+            <div class="container-narrow">
+              <div class="section-head section-head--center">
+                <span class="eyebrow">Questions, answered</span>
+                <h2 class="section-title">Frequently asked questions</h2>
+              </div>
+              <div class="accordion">
+                <div class="accordion-item is-open" data-accordion-item>
+                  <button class="accordion-trigger" type="button" aria-expanded="true">Do I need a referral to book?<svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14" /><path d="M5 12h14" /></svg></button>
+                  <div class="accordion-panel"><div class="accordion-panel__inner">No referral is needed — you can book a consultation directly. If you have imaging or notes from another clinician, bring them along and we'll review them with you.</div></div>
+                </div>
+                <div class="accordion-item" data-accordion-item>
+                  <button class="accordion-trigger" type="button" aria-expanded="false">Will my treatment hurt?<svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14" /><path d="M5 12h14" /></svg></button>
+                  <div class="accordion-panel"><div class="accordion-panel__inner">Rehabilitation should challenge you, not harm you. We work within a comfortable range and progress gradually as your shoulder adapts.</div></div>
+                </div>
+                <div class="accordion-item" data-accordion-item>
+                  <button class="accordion-trigger" type="button" aria-expanded="false">How soon can I be seen?<svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14" /><path d="M5 12h14" /></svg></button>
+                  <div class="accordion-panel"><div class="accordion-panel__inner">We hold appointments open each week for new patients and can usually offer a consultation within a few days.</div></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- CTA -->
+          <section class="section" data-klar-ds-label="CTA">
+            <div class="container">
+              <div class="cta">
+                <h2 class="cta__title">Ready to take the first step?</h2>
+                <p class="cta__lead">Book a consultation today and start a recovery plan built entirely around you.</p>
+                <div class="cta__actions">
+                  <a class="btn btn-primary btn-lg" href="contact.html">Book consultation</a>
+                  <a class="btn btn-outline btn-lg" href="treatments.html">Explore treatments</a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Contact -->
+          <section class="section" data-klar-ds-label="Contact">
+            <div class="container">
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                  <span class="eyebrow">Get in touch</span>
+                  <h2 class="section-title">Book your consultation</h2>
+                  <p class="section-lead mb-8">Tell us a little about your symptoms and our care team will be in touch within one business day.</p>
+                  <form class="flex flex-col gap-6" data-validate novalidate>
+                    <div class="field"><label class="label" for="sec-name">Full name</label><input class="input" id="sec-name" name="name" type="text" required placeholder="Jane Andersson" /><span class="field-error"></span></div>
+                    <div class="field"><label class="label" for="sec-email">Email</label><input class="input" id="sec-email" name="email" type="email" required placeholder="jane@example.com" /><span class="field-error"></span></div>
+                    <div class="field"><label class="label" for="sec-message">Message</label><textarea class="textarea" id="sec-message" name="message" required placeholder="How can we help?"></textarea><span class="field-error"></span></div>
+                    <button class="btn btn-primary btn-lg" type="submit">Send request</button>
+                    <p class="form-note" data-form-status hidden tabindex="-1"></p>
+                  </form>
+                </div>
+                <div class="flex flex-col gap-6">
+                  <div class="map-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg></div>
+                  <div class="card"><div class="card__body">
+                    <div class="info-item"><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg></span><div><div class="info-item__label">Visit us</div><p class="info-item__value">14 Riverside Walk, Stockholm 111 49</p></div></div>
+                    <div class="info-item"><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" /></svg></span><div><div class="info-item__label">Call us</div><p class="info-item__value">+46 8 123 45 67</p></div></div>
+                  </div></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Footer -->
+          <footer class="site-footer" data-klar-ds-label="Footer">
+            <div class="container">
+              <div class="footer-grid">
+                <div>
+                  <a class="footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18c0-6 2.5-9 8-9.5" /><path d="M7 18c3-1 5-3 5.5-6.5" /><circle cx="16" cy="8" r="2.2" fill="currentColor" stroke="none" /></svg></span>Klar Clinic</a>
+                  <p class="footer-about">Specialist shoulder, sports-injury and rehabilitation care — calm, expert, and built around you.</p>
+                </div>
+                <div><h4>Clinic</h4><div class="footer-links"><a class="footer-link" href="about.html">About us</a><a class="footer-link" href="treatments.html">Treatments</a><a class="footer-link" href="contact.html">Contact</a></div></div>
+                <div><h4>Hours</h4><div class="footer-links"><span class="footer-link">Mon–Fri · 8:00–18:00</span><span class="footer-link">Saturday · 9:00–14:00</span><span class="footer-link">Sunday · Closed</span></div></div>
+                <div><h4>Follow</h4><div class="footer-social"><a href="#" aria-label="Klar Clinic on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z" /></svg></a><a href="#" aria-label="Klar Clinic on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg></a><a href="#" aria-label="Klar Clinic on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 7A1.94 1.94 0 1 1 7 3.13 1.94 1.94 0 0 1 6.94 7ZM5.5 9h2.9v9.5H5.5Zm5 0h2.78v1.3h.04a3 3 0 0 1 2.74-1.5c2.93 0 3.47 1.93 3.47 4.44v5.26h-2.9v-4.66c0-1.11 0-2.54-1.55-2.54s-1.78 1.21-1.78 2.46v4.74H10.5Z" /></svg></a></div></div>
+              </div>
+              <div class="footer-bottom"><span>© 2026 Klar Clinic. All rights reserved.</span><span>Calm, expert shoulder &amp; rehabilitation care in Stockholm.</span></div>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== Page footer (built from the system) ===== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom ds-footer-plain">
+          <span>Klar Clinic Design System — rendered live from <code>style.css</code>.</span>
+          <span>© 2026 Klar Clinic</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===================================================================
+         Foundation utility manifest for the Klar editor.
+         Every value references a class that exists in style.css.
+         =================================================================== -->
+    <script type="application/json" data-klar-ds>
+      {
+        "classes": {
+          "Background color": [
+            { "label": "Page", "value": "bg-background" },
+            { "label": "Foreground", "value": "bg-foreground" },
+            { "label": "Brand", "value": "bg-primary" },
+            { "label": "Secondary", "value": "bg-secondary" },
+            { "label": "Muted", "value": "bg-muted" },
+            { "label": "Accent", "value": "bg-accent" },
+            { "label": "Card surface", "value": "bg-card" },
+            { "label": "Destructive", "value": "bg-destructive" },
+            { "label": "Transparent", "value": "bg-transparent" }
+          ],
+          "Text color": [
+            { "label": "Body", "value": "text-foreground" },
+            { "label": "On foreground", "value": "text-background" },
+            { "label": "Primary", "value": "text-primary" },
+            { "label": "On brand", "value": "text-primary-foreground" },
+            { "label": "On secondary", "value": "text-secondary-foreground" },
+            { "label": "Muted", "value": "text-muted-foreground" },
+            { "label": "On accent", "value": "text-accent-foreground" },
+            { "label": "Destructive", "value": "text-destructive" },
+            { "label": "On destructive", "value": "text-destructive-foreground" },
+            { "label": "White", "value": "text-white" },
+            { "label": "Black", "value": "text-black" }
+          ],
+          "Border": [
+            { "label": "All none", "value": "border-0" },
+            { "label": "All small", "value": "border" },
+            { "label": "All medium", "value": "border-2" },
+            { "label": "All large", "value": "border-4" },
+            { "label": "Horizontal none", "value": "border-x-0" },
+            { "label": "Horizontal small", "value": "border-x" },
+            { "label": "Horizontal medium", "value": "border-x-2" },
+            { "label": "Horizontal large", "value": "border-x-4" },
+            { "label": "Vertical none", "value": "border-y-0" },
+            { "label": "Vertical small", "value": "border-y" },
+            { "label": "Vertical medium", "value": "border-y-2" },
+            { "label": "Vertical large", "value": "border-y-4" },
+            { "label": "Top none", "value": "border-t-0" },
+            { "label": "Top small", "value": "border-t" },
+            { "label": "Top medium", "value": "border-t-2" },
+            { "label": "Top large", "value": "border-t-4" },
+            { "label": "Right none", "value": "border-r-0" },
+            { "label": "Right small", "value": "border-r" },
+            { "label": "Right medium", "value": "border-r-2" },
+            { "label": "Right large", "value": "border-r-4" },
+            { "label": "Bottom none", "value": "border-b-0" },
+            { "label": "Bottom small", "value": "border-b" },
+            { "label": "Bottom medium", "value": "border-b-2" },
+            { "label": "Bottom large", "value": "border-b-4" },
+            { "label": "Left none", "value": "border-l-0" },
+            { "label": "Left small", "value": "border-l" },
+            { "label": "Left medium", "value": "border-l-2" },
+            { "label": "Left large", "value": "border-l-4" }
+          ],
+          "Border color": [
+            { "label": "Muted", "value": "border-muted" },
+            { "label": "Foreground", "value": "border-foreground" },
+            { "label": "Primary", "value": "border-primary" },
+            { "label": "Transparent", "value": "border-transparent" }
+          ],
+          "Font size": [
+            { "label": "XS", "value": "text-xs" },
+            { "label": "Small", "value": "text-sm" },
+            { "label": "Base", "value": "text-base" },
+            { "label": "Large", "value": "text-lg" },
+            { "label": "XL", "value": "text-xl" },
+            { "label": "2XL", "value": "text-2xl" },
+            { "label": "3XL", "value": "text-3xl" },
+            { "label": "4XL", "value": "text-4xl" },
+            { "label": "5XL", "value": "text-5xl" },
+            { "label": "4XL", "value": "sm:text-4xl" },
+            { "label": "5XL", "value": "sm:text-5xl" },
+            { "label": "4XL", "value": "md:text-4xl" },
+            { "label": "5XL", "value": "md:text-5xl" },
+            { "label": "4XL", "value": "lg:text-4xl" },
+            { "label": "5XL", "value": "lg:text-5xl" }
+          ],
+          "Font weight": [
+            { "label": "Normal", "value": "font-normal" },
+            { "label": "Medium", "value": "font-medium" },
+            { "label": "Semibold", "value": "font-semibold" },
+            { "label": "Bold", "value": "font-bold" }
+          ],
+          "Line height": [
+            { "label": "Tight", "value": "leading-tight" },
+            { "label": "Snug", "value": "leading-snug" },
+            { "label": "Normal", "value": "leading-normal" },
+            { "label": "Relaxed", "value": "leading-relaxed" }
+          ],
+          "Letter spacing": [
+            { "label": "Tighter", "value": "tracking-tighter" },
+            { "label": "Tight", "value": "tracking-tight" },
+            { "label": "Normal", "value": "tracking-normal" },
+            { "label": "Wide", "value": "tracking-wide" },
+            { "label": "Wider", "value": "tracking-wider" }
+          ],
+          "Text": [
+            { "label": "Align left", "value": "text-left" },
+            { "label": "Align center", "value": "text-center" },
+            { "label": "Align right", "value": "text-right" },
+            { "label": "Uppercase", "value": "uppercase" },
+            { "label": "Italic", "value": "italic" },
+            { "label": "Underline", "value": "underline" },
+            { "label": "Truncate", "value": "truncate" },
+            { "label": "Sans font", "value": "font-sans" },
+            { "label": "Serif font", "value": "font-serif" },
+            { "label": "Align left", "value": "md:text-left" }
+          ],
+          "Typography": [
+            { "label": "Display", "value": "text-5xl font-bold tracking-tight leading-tight" },
+            { "label": "Heading 1", "value": "text-4xl font-bold tracking-tight leading-tight" },
+            { "label": "Heading 2", "value": "text-3xl font-semibold tracking-tight leading-snug" },
+            { "label": "Heading 3", "value": "text-2xl font-semibold leading-snug" },
+            { "label": "Heading 4", "value": "text-xl font-semibold leading-snug" },
+            { "label": "Lead", "value": "text-xl font-normal leading-relaxed" },
+            { "label": "Body", "value": "text-base font-normal leading-normal" },
+            { "label": "Small", "value": "text-sm font-normal leading-normal" },
+            { "label": "Meta", "value": "text-xs font-medium uppercase tracking-wide" }
+          ],
+          "Display": [
+            { "label": "Block", "value": "block" },
+            { "label": "Inline block", "value": "inline-block" },
+            { "label": "Inline", "value": "inline" },
+            { "label": "Flex", "value": "flex" },
+            { "label": "Inline flex", "value": "inline-flex" },
+            { "label": "Grid", "value": "grid" },
+            { "label": "Hidden", "value": "hidden" },
+            { "label": "Flex", "value": "sm:flex" },
+            { "label": "Block", "value": "md:block" },
+            { "label": "Flex", "value": "md:flex" },
+            { "label": "Hidden", "value": "md:hidden" },
+            { "label": "Block", "value": "lg:block" },
+            { "label": "Flex", "value": "lg:flex" },
+            { "label": "Inline flex", "value": "lg:inline-flex" },
+            { "label": "Hidden", "value": "lg:hidden" }
+          ],
+          "Flexbox": [
+            { "label": "Row", "value": "flex-row" },
+            { "label": "Column", "value": "flex-col" },
+            { "label": "Wrap", "value": "flex-wrap" },
+            { "label": "Flex 1", "value": "flex-1" },
+            { "label": "No shrink", "value": "flex-shrink-0" },
+            { "label": "Items start", "value": "items-start" },
+            { "label": "Items center", "value": "items-center" },
+            { "label": "Items end", "value": "items-end" },
+            { "label": "Justify start", "value": "justify-start" },
+            { "label": "Justify center", "value": "justify-center" },
+            { "label": "Justify between", "value": "justify-between" },
+            { "label": "Justify end", "value": "justify-end" },
+            { "label": "Row", "value": "sm:flex-row" },
+            { "label": "Row", "value": "md:flex-row" }
+          ],
+          "Grid columns": [
+            { "label": "1 column", "value": "grid-cols-1" },
+            { "label": "2 columns", "value": "grid-cols-2" },
+            { "label": "3 columns", "value": "grid-cols-3" },
+            { "label": "4 columns", "value": "grid-cols-4" },
+            { "label": "Span 1", "value": "col-span-1" },
+            { "label": "Span 2", "value": "col-span-2" },
+            { "label": "Span full", "value": "col-span-full" },
+            { "label": "2 columns", "value": "sm:grid-cols-2" },
+            { "label": "2 columns", "value": "md:grid-cols-2" },
+            { "label": "3 columns", "value": "md:grid-cols-3" },
+            { "label": "4 columns", "value": "md:grid-cols-4" },
+            { "label": "2 columns", "value": "lg:grid-cols-2" },
+            { "label": "3 columns", "value": "lg:grid-cols-3" },
+            { "label": "4 columns", "value": "lg:grid-cols-4" },
+            { "label": "Span 1", "value": "lg:col-span-1" },
+            { "label": "Span 2", "value": "lg:col-span-2" }
+          ],
+          "Gap": [
+            { "label": "3XS", "value": "gap-1" },
+            { "label": "2XS", "value": "gap-2" },
+            { "label": "XS", "value": "gap-3" },
+            { "label": "Small", "value": "gap-4" },
+            { "label": "Medium", "value": "gap-6" },
+            { "label": "Large", "value": "gap-8" },
+            { "label": "XL", "value": "gap-12" },
+            { "label": "XL", "value": "lg:gap-12" }
+          ],
+          "Margin": [
+            { "label": "Center horizontal", "value": "mx-auto" },
+            { "label": "All none", "value": "m-0" },
+            { "label": "All small", "value": "m-4" },
+            { "label": "All medium", "value": "m-6" },
+            { "label": "All large", "value": "m-8" },
+            { "label": "All XL", "value": "m-12" },
+            { "label": "Horizontal none", "value": "mx-0" },
+            { "label": "Horizontal small", "value": "mx-4" },
+            { "label": "Horizontal medium", "value": "mx-6" },
+            { "label": "Horizontal large", "value": "mx-8" },
+            { "label": "Horizontal XL", "value": "mx-12" },
+            { "label": "Vertical none", "value": "my-0" },
+            { "label": "Vertical small", "value": "my-4" },
+            { "label": "Vertical medium", "value": "my-8" },
+            { "label": "Vertical large", "value": "my-12" },
+            { "label": "Vertical XL", "value": "my-16" },
+            { "label": "Top none", "value": "mt-0" },
+            { "label": "Top small", "value": "mt-4" },
+            { "label": "Top medium", "value": "mt-6" },
+            { "label": "Top large", "value": "mt-8" },
+            { "label": "Top XL", "value": "mt-12" },
+            { "label": "Right none", "value": "mr-0" },
+            { "label": "Right small", "value": "mr-4" },
+            { "label": "Right medium", "value": "mr-6" },
+            { "label": "Right large", "value": "mr-8" },
+            { "label": "Right XL", "value": "mr-12" },
+            { "label": "Bottom none", "value": "mb-0" },
+            { "label": "Bottom small", "value": "mb-4" },
+            { "label": "Bottom medium", "value": "mb-6" },
+            { "label": "Bottom large", "value": "mb-8" },
+            { "label": "Bottom XL", "value": "mb-12" },
+            { "label": "Left none", "value": "ml-0" },
+            { "label": "Left small", "value": "ml-4" },
+            { "label": "Left medium", "value": "ml-6" },
+            { "label": "Left large", "value": "ml-8" },
+            { "label": "Left XL", "value": "ml-12" },
+            { "label": "Vertical XL", "value": "md:my-16" },
+            { "label": "Vertical XL", "value": "lg:my-16" }
+          ],
+          "Padding": [
+            { "label": "All none", "value": "p-0" },
+            { "label": "All small", "value": "p-4" },
+            { "label": "All medium", "value": "p-6" },
+            { "label": "All large", "value": "p-8" },
+            { "label": "All XL", "value": "p-12" },
+            { "label": "Horizontal none", "value": "px-0" },
+            { "label": "Horizontal small", "value": "px-4" },
+            { "label": "Horizontal medium", "value": "px-6" },
+            { "label": "Horizontal large", "value": "px-8" },
+            { "label": "Horizontal XL", "value": "px-12" },
+            { "label": "Vertical none", "value": "py-0" },
+            { "label": "Vertical small", "value": "py-4" },
+            { "label": "Vertical medium", "value": "py-8" },
+            { "label": "Vertical large", "value": "py-12" },
+            { "label": "Vertical XL", "value": "py-16" },
+            { "label": "Top none", "value": "pt-0" },
+            { "label": "Top small", "value": "pt-4" },
+            { "label": "Top medium", "value": "pt-6" },
+            { "label": "Top large", "value": "pt-8" },
+            { "label": "Top XL", "value": "pt-12" },
+            { "label": "Right none", "value": "pr-0" },
+            { "label": "Right small", "value": "pr-4" },
+            { "label": "Right medium", "value": "pr-6" },
+            { "label": "Right large", "value": "pr-8" },
+            { "label": "Right XL", "value": "pr-12" },
+            { "label": "Bottom none", "value": "pb-0" },
+            { "label": "Bottom small", "value": "pb-4" },
+            { "label": "Bottom medium", "value": "pb-6" },
+            { "label": "Bottom large", "value": "pb-8" },
+            { "label": "Bottom XL", "value": "pb-12" },
+            { "label": "Left none", "value": "pl-0" },
+            { "label": "Left small", "value": "pl-4" },
+            { "label": "Left medium", "value": "pl-6" },
+            { "label": "Left large", "value": "pl-8" },
+            { "label": "Left XL", "value": "pl-12" },
+            { "label": "Vertical XL", "value": "md:py-16" },
+            { "label": "Vertical XL", "value": "lg:py-16" }
+          ],
+          "Sizing": [
+            { "label": "Width full", "value": "w-full" },
+            { "label": "Height full", "value": "h-full" },
+            { "label": "Min height screen", "value": "min-h-screen" },
+            { "label": "Max width 2xl", "value": "max-w-2xl" },
+            { "label": "Max width 3xl", "value": "max-w-3xl" },
+            { "label": "Max width 4xl", "value": "max-w-4xl" },
+            { "label": "Max width 6xl", "value": "max-w-6xl" }
+          ],
+          "Radius": [
+            { "label": "None", "value": "rounded-none" },
+            { "label": "Small", "value": "rounded-sm" },
+            { "label": "Medium", "value": "rounded-md" },
+            { "label": "Large", "value": "rounded-lg" },
+            { "label": "Full", "value": "rounded-full" }
+          ],
+          "Shadows": [
+            { "label": "None", "value": "shadow-none" },
+            { "label": "Small", "value": "shadow-sm" },
+            { "label": "Medium", "value": "shadow-md" },
+            { "label": "Large", "value": "shadow-lg" }
+          ],
+          "Position": [
+            { "label": "Relative", "value": "relative" },
+            { "label": "Absolute", "value": "absolute" },
+            { "label": "Sticky", "value": "sticky" },
+            { "label": "Fixed", "value": "fixed" },
+            { "label": "Inset 0", "value": "inset-0" },
+            { "label": "Top 0", "value": "top-0" },
+            { "label": "Right 0", "value": "right-0" },
+            { "label": "Bottom 0", "value": "bottom-0" },
+            { "label": "Left 0", "value": "left-0" }
+          ],
+          "Object fit & aspect": [
+            { "label": "Object cover", "value": "object-cover" },
+            { "label": "Aspect square", "value": "aspect-square" },
+            { "label": "Aspect video", "value": "aspect-video" }
+          ],
+          "Effects": [
+            { "label": "Overflow hidden", "value": "overflow-hidden" },
+            { "label": "Transition", "value": "transition" },
+            { "label": "Cursor pointer", "value": "cursor-pointer" },
+            { "label": "Screen-reader only", "value": "sr-only" }
+          ],
+          "Rich text": [{ "label": "Prose", "value": "prose" }],
+          "Container": [
+            { "label": "Default", "value": "container" },
+            { "label": "Narrow", "value": "container-narrow" },
+            { "label": "Wide", "value": "container-wide" }
+          ],
+          "Grid": [
+            { "label": "2 columns", "value": "grid grid-cols-2" },
+            { "label": "3 columns", "value": "grid grid-cols-3" },
+            { "label": "4 columns", "value": "grid grid-cols-4" }
+          ],
+          "Container and Grid": [
+            { "label": "Default · 2 cols", "value": "container grid grid-cols-2" },
+            { "label": "Default · 3 cols", "value": "container grid grid-cols-3" },
+            { "label": "Default · 4 cols", "value": "container grid grid-cols-4" },
+            { "label": "Narrow · 2 cols", "value": "container-narrow grid grid-cols-2" },
+            { "label": "Narrow · 3 cols", "value": "container-narrow grid grid-cols-3" },
+            { "label": "Narrow · 4 cols", "value": "container-narrow grid grid-cols-4" },
+            { "label": "Wide · 2 cols", "value": "container-wide grid grid-cols-2" },
+            { "label": "Wide · 3 cols", "value": "container-wide grid grid-cols-3" },
+            { "label": "Wide · 4 cols", "value": "container-wide grid grid-cols-4" }
+          ]
+        }
+      }
+    </script>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

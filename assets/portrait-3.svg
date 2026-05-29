@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Portrait of a clinic specialist">
+  <defs>
+    <linearGradient id="p3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dcebf3"/>
+      <stop offset="1" stop-color="#356d92"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#p3)"/>
+  <circle cx="300" cy="250" r="170" fill="#ffffff" opacity="0.22"/>
+  <g transform="translate(300 330)">
+    <circle cx="0" cy="-70" r="98" fill="#16293a" opacity="0.8"/>
+    <path d="M-170 290 q0 -210 170 -222 q170 12 170 222 Z" fill="#16293a" opacity="0.8"/>
+  </g>
+</svg>

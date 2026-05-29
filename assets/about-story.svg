@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="The Klar Clinic team and philosophy illustration">
+  <defs>
+    <linearGradient id="ag" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dcebf3"/>
+      <stop offset="0.6" stop-color="#a9cee1"/>
+      <stop offset="1" stop-color="#4885ac"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#ag)"/>
+  <circle cx="940" cy="240" r="220" fill="#ffffff" opacity="0.32"/>
+  <circle cx="220" cy="700" r="240" fill="#356d92" opacity="0.14"/>
+  <g opacity="0.92">
+    <g transform="translate(320 420)">
+      <circle cx="0" cy="-36" r="58" fill="#16293a" opacity="0.8"/>
+      <path d="M-90 180 q0 -140 90 -148 q90 8 90 148 Z" fill="#16293a" opacity="0.8"/>
+    </g>
+    <g transform="translate(600 400)">
+      <circle cx="0" cy="-40" r="64" fill="#16293a" opacity="0.88"/>
+      <path d="M-100 200 q0 -160 100 -168 q100 8 100 168 Z" fill="#16293a" opacity="0.88"/>
+    </g>
+    <g transform="translate(880 430)">
+      <circle cx="0" cy="-34" r="54" fill="#16293a" opacity="0.74"/>
+      <path d="M-84 170 q0 -130 84 -138 q84 8 84 138 Z" fill="#16293a" opacity="0.74"/>
+    </g>
+  </g>
+  <path d="M0 760 q300 -60 600 -10 q300 50 600 -20 V900 H0 Z" fill="#ffffff" opacity="0.45"/>
+</svg>

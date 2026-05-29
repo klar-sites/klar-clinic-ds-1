@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Treatments — Klar Clinic</title>
+    <meta
+      name="description"
+      content="Shoulder treatments and rehabilitation at Klar Clinic: symptoms, causes, diagnostics, physiotherapy, manual therapy, shockwave, post-surgery rehab and pain management — a calm, non-surgical-first path to lasting recovery."
+    />
+    <meta name="theme-color" content="#356d92" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Set theme before first paint to avoid a flash of the light theme. -->
+    <script>
+      try {
+        if (localStorage.getItem("klar-theme") === "dark")
+          document.documentElement.classList.add("dark");
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ===================== Site header ===================== -->
+    <header class="site-header" data-site-header>
+      <div class="container">
+        <div class="site-header__inner">
+          <a class="brand" href="index.html" aria-label="Klar Clinic home">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18c0-6 2.5-9 8-9.5" /><path d="M7 18c3-1 5-3 5.5-6.5" /><circle cx="16" cy="8" r="2.2" fill="currentColor" stroke="none" /></svg>
+            </span>
+            Klar Clinic
+          </a>
+
+          <nav class="nav hidden lg:flex" data-nav aria-label="Primary">
+            <ul class="nav-list">
+              <li><a class="nav-link" href="index.html">Home</a></li>
+              <li><a class="nav-link" href="about.html">About</a></li>
+              <li><a class="nav-link is-active" href="treatments.html" aria-current="page">Treatments</a></li>
+              <li><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+
+          <div class="nav-actions">
+            <button class="icon-btn" type="button" aria-label="Toggle theme" title="Toggle light / dark">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>
+            </button>
+            <a class="btn btn-primary btn-sm hidden lg:inline-flex" href="contact.html">Book consultation</a>
+            <button class="icon-btn nav-toggle lg:hidden" type="button" data-nav-toggle aria-expanded="false" aria-label="Open menu" aria-controls="mobile-menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link is-active" href="treatments.html" aria-current="page">Treatments</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+        <a class="btn btn-primary btn-block" href="contact.html">Book consultation</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ===================== Page header ===================== -->
+      <section class="page-header">
+        <div class="container">
+          <span class="eyebrow">Treatments &amp; rehabilitation</span>
+          <h1 class="page-header__title">Shoulder treatments &amp; rehabilitation</h1>
+          <p class="page-header__lead">
+            From precise diagnosis to a guided return to full movement, we treat every shoulder
+            condition with proven, non-surgical-first care — calm, expert, and built entirely
+            around you.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== Overview ===================== -->
+      <section class="section">
+        <div class="container">
+          <div class="split">
+            <div class="split-media reveal"><img src="assets/therapy.svg" alt="A guided shoulder rehabilitation exercise at Klar Clinic" loading="lazy" width="800" height="600" /></div>
+            <div class="reveal">
+              <span class="eyebrow">Understanding the shoulder</span>
+              <h2 class="section-title">A remarkably mobile joint — and a vulnerable one</h2>
+              <div class="prose">
+                <p>
+                  The shoulder is the most mobile joint in the body. That extraordinary range —
+                  letting you reach overhead, behind your back and across your body — comes from a
+                  shallow ball-and-socket design held together almost entirely by soft tissue:
+                  tendons, ligaments and the muscles of the rotator cuff.
+                </p>
+                <p>
+                  It is precisely that mobility that makes the shoulder prone to injury. When a
+                  tendon is overloaded, a movement pattern drifts off course, or the joint takes a
+                  sudden knock, pain and stiffness can follow quickly. The encouraging news is that
+                  the vast majority of shoulder problems respond well to a structured,
+                  evidence-based rehabilitation plan — usually without surgery.
+                </p>
+                <p>
+                  Below you will find the symptoms we see most often, the common underlying causes,
+                  how we reach a clear diagnosis, and the treatment options we use to get you moving
+                  freely again.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Symptoms ===================== -->
+      <section class="section bg-muted">
+        <div class="container">
+          <div class="section-head section-head--center mx-auto reveal">
+            <span class="eyebrow">Symptoms</span>
+            <h2 class="section-title">Signs your shoulder needs attention</h2>
+            <p class="section-lead">
+              Shoulder problems rarely announce themselves all at once. If any of these feel
+              familiar, an assessment can pinpoint what is happening and how to put it right.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+            <article class="card">
+              <div class="card__body">
+                <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg></span>
+                <h3 class="card__title">Pain at night</h3>
+                <p class="card__text">A deep ache that worsens when lying down or rolling onto the shoulder, often disrupting sleep.</p>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__body">
+                <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9" /><path d="M21 3v6h-6" /></svg></span>
+                <h3 class="card__title">Limited range of motion</h3>
+                <p class="card__text">Difficulty raising the arm overhead, reaching behind your back, or fastening clothing.</p>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__body">
+                <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z" /></svg></span>
+                <h3 class="card__title">Weakness lifting</h3>
+                <p class="card__text">The arm feels unreliable or gives way under load, from carrying bags to lifting overhead.</p>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__body">
+                <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 5 4-12 2 7h6" /></svg></span>
+                <h3 class="card__title">Clicking or catching</h3>
+                <p class="card__text">A click, grind or sense of the joint snagging as you move through certain positions.</p>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__body">
+                <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg></span>
+                <h3 class="card__title">Stiffness</h3>
+                <p class="card__text">A joint that feels tight and slow to warm up, gradually losing freedom of movement.</p>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__body">
+                <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /></svg></span>
+                <h3 class="card__title">Instability</h3>
+                <p class="card__text">A feeling that the shoulder may slip or pop out, especially with overhead or twisting movements.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Causes ===================== -->
+      <section class="section">
+        <div class="container-narrow">
+          <div class="section-head section-head--center mx-auto reveal">
+            <span class="eyebrow">Common causes</span>
+            <h2 class="section-title">Why shoulder problems develop</h2>
+            <p class="section-lead">
+              Most shoulder pain traces back to one of a handful of patterns. Understanding the
+              cause is the first step to treating it properly.
+            </p>
+          </div>
+          <ul class="checklist reveal">
+            <li><b>Overuse and repetitive strain</b> — repeated overhead movements at work, in the gym or in sport gradually irritate tendons and the bursa.</li>
+            <li><b>Sports and traumatic injury</b> — a fall, tackle, dislocation or sudden heavy lift can tear or strain the structures that stabilise the joint.</li>
+            <li><b>Age-related degeneration</b> — tendons and cartilage naturally lose resilience over time, making the cuff more susceptible to tears and wear.</li>
+            <li><b>Poor posture and weak control</b> — rounded shoulders and an under-conditioned cuff alter how the joint moves, leading to pinching and impingement.</li>
+            <li><b>Post-surgical recovery</b> — after an operation, the shoulder needs careful, progressive rehabilitation to rebuild range, strength and confidence.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===================== Diagnostic methods ===================== -->
+      <section class="section bg-muted">
+        <div class="container">
+          <div class="section-head section-head--center mx-auto reveal">
+            <span class="eyebrow">Diagnosis</span>
+            <h2 class="section-title">How we find the true source of pain</h2>
+            <p class="section-lead">
+              Clear answers come first. We combine hands-on expertise with modern imaging so your
+              treatment is built on a precise diagnosis — often within a single visit.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+            <article class="card">
+              <div class="card__body">
+                <span class="icon-badge icon-badge--lg" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /></svg></span>
+                <h3 class="card__title">Physical assessment</h3>
+                <p class="card__text">A thorough, unhurried examination of strength, range, stability and specific movement tests.</p>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__body">
+                <span class="icon-badge icon-badge--lg" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9 9 0 0 1 9 9" /><path d="M3 12a9 9 0 0 0 9 9 9 9 0 0 0 9-9" /><circle cx="12" cy="12" r="2" /></svg></span>
+                <h3 class="card__title">Ultrasound imaging</h3>
+                <p class="card__text">On-site dynamic ultrasound lets us see tendons and the bursa move in real time, right in the room.</p>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__body">
+                <span class="icon-badge icon-badge--lg" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M9 3v18" /><path d="M14 8l3 4-3 4" /></svg></span>
+                <h3 class="card__title">MRI referral</h3>
+                <p class="card__text">When deeper detail is needed, we arrange and interpret MRI scans to map soft-tissue damage precisely.</p>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__body">
+                <span class="icon-badge icon-badge--lg" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18" /><path d="m7 14 3-4 3 3 5-7" /></svg></span>
+                <h3 class="card__title">Movement analysis</h3>
+                <p class="card__text">We study how your shoulder and shoulder blade coordinate, revealing the patterns driving your pain.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Treatment options ===================== -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head section-head--center mx-auto reveal">
+            <span class="eyebrow">Treatment options</span>
+            <h2 class="section-title">Proven, non-surgical-first care</h2>
+            <p class="section-lead">
+              Every plan is tailored to your diagnosis and your goals, drawing on the right
+              combination of these approaches at each stage of recovery.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+            <article class="card card--hover">
+              <div class="card__body">
+                <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z" /></svg></span>
+                <h3 class="card__title">Physiotherapy</h3>
+                <p class="card__text">Graded, progressive loading that rebuilds strength, control and range of motion — the cornerstone of lasting recovery.</p>
+                <a class="cta-link" href="contact.html">Book this treatment <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+              </div>
+            </article>
+            <article class="card card--hover">
+              <div class="card__body">
+                <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" /></svg></span>
+                <h3 class="card__title">Manual therapy</h3>
+                <p class="card__text">Hands-on mobilisation and soft-tissue techniques to ease stiffness, settle pain and restore smooth movement.</p>
+                <a class="cta-link" href="contact.html">Book this treatment <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+              </div>
+            </article>
+            <article class="card card--hover">
+              <div class="card__body">
+                <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2 6 4-12 2 6h6" /></svg></span>
+                <h3 class="card__title">Shockwave &amp; regenerative</h3>
+                <p class="card__text">Targeted shockwave and regenerative therapies to stimulate healing in stubborn, persistent tendon problems.</p>
+                <a class="cta-link" href="contact.html">Book this treatment <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+              </div>
+            </article>
+            <article class="card card--hover">
+              <div class="card__body">
+                <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /><path d="m9 12 2 2 4-4" /></svg></span>
+                <h3 class="card__title">Cortisone guidance</h3>
+                <p class="card__text">When appropriate, carefully considered, image-guided injections to calm inflammation and create a window for rehab.</p>
+                <a class="cta-link" href="contact.html">Book this treatment <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+              </div>
+            </article>
+            <article class="card card--hover">
+              <div class="card__body">
+                <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9" /><path d="M21 3v6h-6" /><path d="m9 12 2 2 4-4" /></svg></span>
+                <h3 class="card__title">Post-surgery rehab</h3>
+                <p class="card__text">Structured, stage-by-stage recovery after an operation, rebuilding range, strength and trust in the joint.</p>
+                <a class="cta-link" href="contact.html">Book this treatment <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+              </div>
+            </article>
+            <article class="card card--hover">
+              <div class="card__body">
+                <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.5 3-5.5A4.5 4.5 0 0 0 12 6 4.5 4.5 0 0 0 2 8.5c0 2 1.5 4 3 5.5l7 7Z" /></svg></span>
+                <h3 class="card__title">Pain management</h3>
+                <p class="card__text">Conservative, targeted strategies to bring persistent pain under control so you can move and progress again.</p>
+                <a class="cta-link" href="contact.html">Book this treatment <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Rehabilitation process ===================== -->
+      <section class="section bg-muted">
+        <div class="container">
+          <div class="section-head section-head--center mx-auto reveal">
+            <span class="eyebrow">How it works</span>
+            <h2 class="section-title">Your rehabilitation pathway</h2>
+            <p class="section-lead">A clear, supported journey — so you always know what comes next and why.</p>
+          </div>
+          <div class="flex flex-col md:flex-row gap-8 reveal">
+            <div class="step flex-1"><span class="step__number">1</span><h3 class="step__title">Consultation</h3><p class="step__text">We listen to your history and goals in an unhurried first visit.</p></div>
+            <div class="step flex-1"><span class="step__number">2</span><h3 class="step__title">Diagnosis</h3><p class="step__text">Hands-on testing and imaging pinpoint the true source of pain.</p></div>
+            <div class="step flex-1"><span class="step__number">3</span><h3 class="step__title">Personalised treatment</h3><p class="step__text">A plan combining therapy, guidance and clear milestones.</p></div>
+            <div class="step flex-1"><span class="step__number">4</span><h3 class="step__title">Rehabilitation</h3><p class="step__text">Progressive loading rebuilds strength, control and confidence.</p></div>
+            <div class="step flex-1"><span class="step__number">5</span><h3 class="step__title">Recovery</h3><p class="step__text">A lasting return to the movement and activities you love.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Recovery expectations ===================== -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head section-head--center mx-auto reveal">
+            <span class="eyebrow">What to expect</span>
+            <h2 class="section-title">Realistic recovery timelines</h2>
+            <p class="section-lead">
+              Every shoulder is different, but most recoveries follow a reassuringly predictable
+              shape. Here is what patients typically experience.
+            </p>
+          </div>
+          <div class="trust-bar reveal">
+            <div class="stat"><span class="stat-value">1–2 wks</span><span class="stat-label">Settling pain &amp; protecting the joint</span></div>
+            <div class="stat"><span class="stat-value">6 wks</span><span class="stat-label">First meaningful improvement</span></div>
+            <div class="stat"><span class="stat-value">3–6 mo</span><span class="stat-label">Full recovery for most conditions</span></div>
+            <div class="stat"><span class="stat-value">90%+</span><span class="stat-label">Recover without surgery</span></div>
+          </div>
+          <p class="section-lead text-center mx-auto mt-8 max-w-3xl reveal">
+            Recovery is rarely perfectly linear. Your specialist reviews progress at every visit and
+            adjusts the plan to how your body responds — keeping you moving forward safely.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== FAQ ===================== -->
+      <section class="section bg-muted">
+        <div class="container-narrow">
+          <div class="section-head section-head--center mx-auto reveal">
+            <span class="eyebrow">Questions, answered</span>
+            <h2 class="section-title">Treatment questions</h2>
+          </div>
+          <div class="accordion reveal">
+            <div class="accordion-item is-open" data-accordion-item>
+              <button class="accordion-trigger" type="button" aria-expanded="true">Will I need surgery for my shoulder?<svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14" /><path d="M5 12h14" /></svg></button>
+              <div class="accordion-panel"><div class="accordion-panel__inner">The large majority of shoulder problems resolve with structured rehabilitation. Surgery is only ever recommended when it is genuinely the best option for you — and if it is, we'll explain exactly why and guide your recovery afterwards.</div></div>
+            </div>
+            <div class="accordion-item" data-accordion-item>
+              <button class="accordion-trigger" type="button" aria-expanded="false">How long until I feel better?<svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14" /><path d="M5 12h14" /></svg></button>
+              <div class="accordion-panel"><div class="accordion-panel__inner">Most patients notice meaningful improvement within six weeks, with full recovery typically between three and six months. The timeline depends on the condition, how long it has been present, and your goals — your specialist will give you a realistic estimate at your first visit.</div></div>
+            </div>
+            <div class="accordion-item" data-accordion-item>
+              <button class="accordion-trigger" type="button" aria-expanded="false">Does rehabilitation hurt?<svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14" /><path d="M5 12h14" /></svg></button>
+              <div class="accordion-panel"><div class="accordion-panel__inner">Rehabilitation should challenge you, not harm you. We work within a comfortable range and load the shoulder gradually as it adapts. Some effort and mild muscle fatigue are normal and healthy; sharp or lasting pain is not, and we adjust the plan accordingly.</div></div>
+            </div>
+            <div class="accordion-item" data-accordion-item>
+              <button class="accordion-trigger" type="button" aria-expanded="false">Will I get exercises to do at home?<svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14" /><path d="M5 12h14" /></svg></button>
+              <div class="accordion-panel"><div class="accordion-panel__inner">Yes. A personalised home programme is central to lasting recovery. We keep it clear and manageable, show you exactly how to perform each movement, and review and progress it at every appointment.</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Related treatments ===================== -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head section-head--center mx-auto reveal">
+            <span class="eyebrow">Related conditions</span>
+            <h2 class="section-title">Conditions we commonly treat</h2>
+            <p class="section-lead">The approaches above are tailored to the specific condition behind your pain. These are among the most frequent.</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+            <article class="card card--hover">
+              <div class="card__body">
+                <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg></span>
+                <h3 class="card__title">Rotator cuff injuries</h3>
+                <p class="card__text">Targeted strengthening and load management to repair and protect the tendons that stabilise your shoulder.</p>
+                <a class="cta-link" href="contact.html">Discuss your symptoms <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+              </div>
+            </article>
+            <article class="card card--hover">
+              <div class="card__body">
+                <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg></span>
+                <h3 class="card__title">Frozen shoulder</h3>
+                <p class="card__text">A staged programme to ease pain, restore range of motion and break the stiffness cycle for good.</p>
+                <a class="cta-link" href="contact.html">Discuss your symptoms <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+              </div>
+            </article>
+            <article class="card card--hover">
+              <div class="card__body">
+                <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /></svg></span>
+                <h3 class="card__title">Shoulder impingement</h3>
+                <p class="card__text">Correcting movement patterns to relieve pinching and restore smooth, pain-free overhead motion.</p>
+                <a class="cta-link" href="contact.html">Discuss your symptoms <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Booking CTA ===================== -->
+      <section class="section">
+        <div class="container">
+          <div class="cta reveal">
+            <h2 class="cta__title">Not sure which treatment is right for you?</h2>
+            <p class="cta__lead">Book a consultation and we'll assess your shoulder, explain your options clearly, and build a recovery plan around your goals.</p>
+            <div class="cta__actions">
+              <a class="btn btn-primary btn-lg" href="contact.html">Book consultation</a>
+              <a class="btn btn-outline btn-lg" href="about.html">Meet the team</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================== Footer ===================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18c0-6 2.5-9 8-9.5" /><path d="M7 18c3-1 5-3 5.5-6.5" /><circle cx="16" cy="8" r="2.2" fill="currentColor" stroke="none" /></svg></span>Klar Clinic</a>
+            <p class="footer-about">Specialist shoulder, sports-injury and rehabilitation care — calm, expert, and built around you.</p>
+          </div>
+          <div>
+            <h4>Clinic</h4>
+            <div class="footer-links">
+              <a class="footer-link" href="about.html">About us</a>
+              <a class="footer-link" href="treatments.html">Treatments</a>
+              <a class="footer-link" href="contact.html">Contact</a>
+              <a class="footer-link" href="contact.html">Book consultation</a>
+            </div>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <div class="footer-links">
+              <span class="footer-link">14 Riverside Walk, Stockholm 111 49</span>
+              <a class="footer-link" href="tel:+4681234567">+46 8 123 45 67</a>
+              <a class="footer-link" href="mailto:hello@klarclinic.se">hello@klarclinic.se</a>
+            </div>
+          </div>
+          <div>
+            <h4>Hours</h4>
+            <div class="footer-links">
+              <span class="footer-link">Mon–Fri · 8:00–18:00</span>
+              <span class="footer-link">Saturday · 9:00–14:00</span>
+              <span class="footer-link">Sunday · Closed</span>
+            </div>
+            <div class="footer-social mt-6">
+              <a href="#" aria-label="Klar Clinic on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z" /></svg></a>
+              <a href="#" aria-label="Klar Clinic on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg></a>
+              <a href="#" aria-label="Klar Clinic on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 7A1.94 1.94 0 1 1 7 3.13 1.94 1.94 0 0 1 6.94 7ZM5.5 9h2.9v9.5H5.5Zm5 0h2.78v1.3h.04a3 3 0 0 1 2.74-1.5c2.93 0 3.47 1.93 3.47 4.44v5.26h-2.9v-4.66c0-1.11 0-2.54-1.55-2.54s-1.78 1.21-1.78 2.46v4.74H10.5Z" /></svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 Klar Clinic. All rights reserved.</span>
+          <span>Calm, expert shoulder &amp; rehabilitation care in Stockholm.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
